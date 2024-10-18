@@ -7,7 +7,7 @@
     "clean": "rimraf dist",
     "compile": "tsc",
     "generate": "LOCALE=en node dist/index.js > dist/en.html && LOCALE=fr node dist/index.js > dist/fr.html && cp dist/fr.html dist/index.html",
-    "style": "tailwindcss -i src/index.css -o dist/index.css",
+    "style": "tailwindcss -i src/index.css -o dist/index.css && cp src/favicon.png dist/",
     "build": "npm run clean && npm run compile && npm run generate && npm run style",
     "serve": "http-server dist/"
   },
