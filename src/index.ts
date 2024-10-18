@@ -2,6 +2,7 @@ import pug from 'pug'
 import showdown from 'showdown'
 import {format, parse} from 'date-fns'
 import {fr, enUS as en} from 'date-fns/locale'
+import * as process from 'node:process'
 
 import dataEn from './data/en.json'
 import dataFr from './data/fr.json'
@@ -17,6 +18,7 @@ const dateLocales = {fr, en}
 const experiences = {fr: dataFr, en: dataEn}
 
 console.log(compiledFunction({
+    baseHref: process.env.BASE_HREF ?? '/',
     ...(experiences[locale] ?? {}),
     locales,
     currentLocale: locale,
