@@ -32,7 +32,8 @@
         "Typescript",
         "Serverless (AWS)",
         "Dynamo",
-        "React"
+        "React",
+        "CloudFormation"
       ],
       "shortDescription": "a Retail financing leader",
       "description": "As a technical lead, I guided the development team in modernizing the loan platform."
