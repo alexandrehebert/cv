@@ -26,7 +26,8 @@
       "contract": "CDI · Temps plein",
       "year": 2024,
       "period": {
-        "from": "2024-12"
+        "from": "2024-12",
+        "to": "Aujourd'hui"
       },
       "skills": [
         "Typescript",
@@ -35,7 +36,13 @@
         "React"
       ],
       "shortDescription": "un leader du prêt à la consommation",
-      "description": "Je suis intervenu avec l'ensemble de l'équipe de développement, dans la modernisation de la plateforme de prêt à la consommation. J'ai ainsi participé au développement de différentes briques logicielles, tantôt techniques, tantôt fonctionnelles, afin d'améliorer l'expérience utilisateur chez Fairstone."
+      "description": "Je suis intervenu avec l'ensemble de l'équipe de développement, dans la modernisation de la plateforme de prêt à la consommation. J'ai ainsi participé au développement de différentes briques logicielles, tantôt techniques, tantôt fonctionnelles, afin d'améliorer l'expérience utilisateur chez Fairstone.",
+      "contributions": [
+        "conception et participation au développement d'un service de lecture de spécimens de chèques",
+        "conception du service de récupération et lecture des enregistrements d'appels",
+        "conception et développement du service d'onboarding de nouveaux marchands",
+        "migration d'une bibliothèque de composants react vers Vite"
+      ]
     },
     {
       "company": "Qiara",
@@ -106,7 +113,7 @@
         "Redis",
         "Mongo"
       ],
-      "shortDescription": "(désormais HealthHero) un concurrent solide de Doctolib",
+      "shortDescription": "(désormais HealthHero) un concurrent solide de Dialogue",
       "description": "Alors que Qare faisait figure d'outsider, j’ai contribué au développement de leur interface de gestion de patientèle. Par la suite, j'ai pu participer au développement de l’interface de prise de rendez-vous en ligne, afin de convaincre davantage de médecins d'utiliser la solution.",
       "contributions": [
         "développement de l'interface de gestion de patientèle",

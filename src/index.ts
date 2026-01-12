@@ -23,5 +23,9 @@ console.log(compiledFunction({
     locales,
     currentLocale: locale,
     md: (text: string) => showdownConverter.makeHtml(text),
-    period: (date: string) => format(date ? parse(date, "yyyy-MM", new Date()) : new Date(), "LLL yyyy", {locale: dateLocales[locale]})
+    period: (date: string) => {
+        if (!date || date?.includes('-'))
+            return format(date ? parse(date, "yyyy-MM", new Date()) : new Date(), "LLL yyyy", {locale: dateLocales[locale]})
+        return date
+    }
 }))

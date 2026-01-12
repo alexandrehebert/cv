@@ -3,11 +3,7 @@
   "subTitle": "*11 years* of experience",
   "name": "Alexandre Hebert",
   "description": "Passionate computer scientist, more precisely *full stack developer*, and with extensive experience in *agile methodologies*, I put my skills at the service of startups or multinationals, in *varied business fields* during more than *ten years*.\n\nI had the chance to join talented teams, following or not principles of so-called agile methodologies. I’ve worn *several hats* from lead developer to Scrum master in parallel to my development activities, and even CTO for a short period. But more than my solid experiences and development skills, I am *adaptable* and I’m always *striving to do better*.\n\nPlus, I like to bring *good vibes* and *best practices* (tests, continuous integration, etc.) wherever I go, wherever I work!",
-  "skills": [
-    "Typescript",
-    "Node",
-    "React"
-  ],
+  "skills": ["Typescript", "Node", "React"],
   "details": [
     "Located in *Montreal*, Canada",
     "*With* an open work permit",
@@ -15,9 +11,7 @@
   ],
   "phones": ["+1 (438) 519-3538", "+33 6 30 78 66 39"],
   "email": "hebert.alex+pro@gmail.com",
-  "social": [
-    "github.com/alexandrehebert"
-  ],
+  "social": ["github.com/alexandrehebert"],
   "experiences": [
     {
       "company": "Fairstone Bank",
@@ -25,9 +19,7 @@
       "role": "Senior Fullstack Developer - Technical Lead",
       "contract": "Permanent - Full time",
       "year": 2024,
-      "period": {
-        "from": "2024-12"
-      },
+      "period": { "from": "2024-12", "to": "Now" },
       "skills": [
         "Typescript",
         "Serverless (AWS)",
@@ -36,7 +28,13 @@
         "CloudFormation"
       ],
       "shortDescription": "a Retail financing leader",
-      "description": "As a technical lead, I guided the development team in modernizing the loan platform."
+      "description": "As a technical lead, I guided the development team in modernizing the loan platform.",
+      "contributions": [
+        "design and contribution to the development of a check specimen reading service",
+        "design of the call recording retrieval and playback service",
+        "design and development of the new merchant onboarding service",
+        "migration of a React component library to Vite"
+      ]
     },
     {
       "company": "Qiara",
@@ -44,10 +42,7 @@
       "role": "Senior Fullstack Developer - Technical Lead",
       "contract": "Contractor - Full time",
       "year": 2023,
-      "period": {
-        "from": "2022-03",
-        "to": "2023-09"
-      },
+      "period": { "from": "2022-03", "to": "2023-09" },
       "skills": [
         "Typescript",
         "Node",
@@ -56,7 +51,15 @@
         "Scaleway"
       ],
       "shortDescription": "a European Google Nest",
-      "description": "In the context of a product launch, I contributed to the development of the site allowing the very first orders to be taken. I also bootstrapped a back office to manage new customers, their orders or even the installation of their system."
+      "description": "In the context of a product launch, I contributed to the development of the site allowing the very first orders to be taken. I also bootstrapped a back office to manage new customers, their orders or even the installation of their system.",
+      "contributions": [
+        "development of the back-office for customer service and internal staff",
+        "implementation of logistics batch jobs for parcel shipping",
+        "design of the marketing website and implementation of the design system, including landing page and shopping cart",
+        "implementation of synchronization webhooks with the payment service",
+        "development of the invoice generation service",
+        "development of the transactional email sending service"
+      ]
     },
     {
       "company": "Alkemics",
@@ -64,17 +67,16 @@
       "role": "Senior Fullstack Developer",
       "contract": "Contractor - Full time",
       "year": 2021,
-      "period": {
-        "from": "2020-08",
-        "to": "2021-02"
-      },
-      "skills": [
-        "Typescript",
-        "Python",
-        "React"
-      ],
+      "period": { "from": "2020-08", "to": "2021-02" },
+      "skills": ["Typescript", "Python", "React"],
       "shortDescription": "(now Salsify) a data aggregator for retail companies",
-      "description": "During the merge with Salsify, I developed a brand new permissions management interface for clients, allowing them to finely choose \"who\" can modify which product, and how. I then had to develop the modification history, in order to make the screens and dashboard more intuitive and fluid."
+      "description": "During the merge with Salsify, I developed a brand new permissions management interface for clients, allowing them to finely choose \"who\" can modify which product, and how. I then had to develop the modification history, in order to make the screens and dashboard more intuitive and fluid.",
+      "contributions": [
+        "modification of the product data read/write interface",
+        "development of the product data change history interface",
+        "development of the customer administration interface",
+        "development of the permissions module interface"
+      ]
     },
     {
       "company": "Qare",
@@ -82,19 +84,15 @@
       "role": "Senior Fullstack Developer",
       "contract": "Contractor - Full time",
       "year": 2020,
-      "period": {
-        "from": "2019-11",
-        "to": "2020-07"
-      },
-      "skills": [
-        "Typescript",
-        "Node",
-        "React",
-        "Redis",
-        "Mongo"
-      ],
-      "shortDescription": "(now HealthHero) a Doctolib competitor",
-      "description": "While Qare was an outsider, I contributed to the development of their patient management interface. Subsequently, I was able to participate in the development of the online appointment booking interface, in order to convince more doctors to use the solution."
+      "period": { "from": "2019-11", "to": "2020-07" },
+      "skills": ["Typescript", "Node", "React", "Redis", "Mongo"],
+      "shortDescription": "(now HealthHero) a Dialogue competitor",
+      "description": "While Qare was an outsider, I contributed to the development of their patient management interface. Subsequently, I was able to participate in the development of the online appointment booking interface, in order to convince more doctors to use the solution.",
+      "contributions": [
+        "development of the patient management interface",
+        "modification of the online appointment booking module",
+        "modification of the prescription generation service"
+      ]
     },
     {
       "company": "Virtuo",
@@ -102,19 +100,17 @@
       "role": "Senior Fullstack Developer",
       "contract": "Contractor - Full time",
       "year": 2019,
-      "period": {
-        "from": "2018-11",
-        "to": "2019-10"
-      },
-      "skills": [
-        "Typescript",
-        "Node",
-        "React",
-        "Mongo",
-        "Heroku"
-      ],
+      "period": { "from": "2018-11", "to": "2019-10" },
+      "skills": ["Typescript", "Node", "React", "Mongo", "Heroku"],
       "shortDescription": "the french equivalent of Communauto",
-      "description": "After a successful fundraising, Virtuo was able to offer me the opportunity to develop back-office building blocks and more particularly the management of damages related to their two thousand vehicles in order to optimize the costs linked to damages. I also developed integration with third-party rental sites, making Virtuo more visible and helping to increase bookings."
+      "description": "After a successful fundraising, Virtuo was able to offer me the opportunity to develop back-office building blocks and more particularly the management of damages related to their two thousand vehicles in order to optimize the costs linked to damages. I also developed integration with third-party rental sites, making Virtuo more visible and helping to increase bookings.",
+      "contributions": [
+        "development of the vehicle damage management interface",
+        "integration with third-party car rental platforms",
+        "enhancements to the vehicle reservation website",
+        "enhancements to the website dedicated to business customers",
+        "modification of the transactional email sending service"
+      ]
     },
     {
       "company": "Frichti",
@@ -122,19 +118,16 @@
       "role": "Senior Fullstack Developer",
       "contract": "Contractor - Full time",
       "year": 2018,
-      "period": {
-        "from": "2017-11",
-        "to": "2018-10"
-      },
-      "skills": [
-        "Node",
-        "React",
-        "RabbitMQ",
-        "Kubernetes",
-        "PostgreSQL"
-      ],
+      "period": { "from": "2017-11", "to": "2018-10" },
+      "skills": ["Node", "React", "RabbitMQ", "Kubernetes", "PostgreSQL"],
       "shortDescription": "(now Gorillas) an UberEats with kitchens",
-      "description": "In a context of Frichti's expansion to several French cities, I mainly developed their delivery planning in order to manage a fleet of hundreds of delivery people, and the synchronization of customer data with various marketing tools in order to better identify and target their thousands of customers."
+      "description": "In a context of Frichti's expansion to several French cities, I mainly developed their delivery planning in order to manage a fleet of hundreds of delivery people, and the synchronization of customer data with various marketing tools in order to better identify and target their thousands of customers.",
+      "contributions": [
+        "development of the delivery planning system integrated with Shiftplan",
+        "modification of the backend application for delivery drivers",
+        "development of synchronization batch jobs with Segment",
+        "various enhancements to the existing website"
+      ]
     },
     {
       "company": "KinTribe",
@@ -142,18 +135,15 @@
       "role": "Senior Fullstack Developer - CTO",
       "contract": "Permanent - Full time",
       "year": 2017,
-      "period": {
-        "from": "2016-02",
-        "to": "2017-10"
-      },
-      "skills": [
-        "Node",
-        "Angular",
-        "Mongo",
-        "AWS"
-      ],
+      "period": { "from": "2016-02", "to": "2017-10" },
+      "skills": ["Node", "Angular", "Mongo", "AWS"],
       "shortDescription": "a recruitment assistant",
-      "description": "In a market where technical profiles are hard to find, I contributed to the development of a technical profile scoring tool capable of measuring the propensity of the latter to leave their current job, or not. I also developed a Chrome extension allowing the recruiter to save time and access the data and scoring of a profile from any LinkedIn page."
+      "description": "In a market where technical profiles are hard to find, I contributed to the development of a technical profile scoring tool capable of measuring the propensity of the latter to leave their current job, or not. I also developed a Chrome extension allowing the recruiter to save time and access the data and scoring of a profile from any LinkedIn page.",
+      "contributions": [
+        "development of a Chrome extension for LinkedIn",
+        "creation of the recruitment process management dashboard",
+        "creation of the candidate pool database"
+      ]
     },
     {
       "company": "Canal Plus",
@@ -161,38 +151,32 @@
       "role": "Fullstack Developer",
       "contract": "Permanent - Full time",
       "year": 2017,
-      "period": {
-        "from": "2017-04",
-        "to": "2017-07"
-      },
-      "skills": [
-        "Javascript",
-        "Flow",
-        "React",
-        "Redux"
-      ],
+      "period": { "from": "2017-04", "to": "2017-07" },
+      "skills": ["Javascript", "Flow", "React", "Redux"],
       "shortDescription": "a TV channel",
-      "description": "While Canal Plus was about to announce the launch of their brand new TV decoder, I participated in the development of the decoder interface, from the presentation and selection of channels, to the communication interface with the lower bricks of the decoder. The objective is to stand out from competitors by offering an intuitive, pleasing to the eye, and fluid interface."
+      "description": "While Canal Plus was about to announce the launch of their brand new TV decoder, I participated in the development of the decoder interface, from the presentation and selection of channels, to the communication interface with the lower bricks of the decoder. The objective is to stand out from competitors by offering an intuitive, pleasing to the eye, and fluid interface.",
+      "contributions": [
+        "modification of the virtual on-screen keyboard",
+        "development of the channel selection interface",
+        "modification of the playback overlay",
+        "implementation of communication with external channel providers"
+      ]
     },
     {
       "company": "Arval - BNP Paribas",
-      "role": "Fullstack Developer",
       "location": "Paris, France",
+      "role": "Fullstack Developer",
       "contract": "Permanent - Full time",
       "year": 2014,
-      "period": {
-        "from": "2014-11",
-        "to": "2016-01"
-      },
-      "skills": [
-        "Java",
-        "SpringBoot",
-        "RabbitMQ",
-        "Angular",
-        "Chart"
-      ],
+      "period": { "from": "2014-11", "to": "2016-01" },
+      "skills": ["Java", "SpringBoot", "RabbitMQ", "Angular", "Chart"],
       "shortDescription": "a vehicle fleet management interface",
-      "description": "In order to optimize and reduce the risks linked to its fleet of 700,000 vehicles, I developed the vehicle fleet management interface, the presentation of consolidated data in the form of diagrams, as well as communication with 700,000 vehicles."
+      "description": "In order to optimize and reduce the risks linked to its fleet of 700,000 vehicles, I developed the vehicle fleet management interface, the presentation of consolidated data in the form of diagrams, as well as communication with 700,000 vehicles.",
+      "contributions": [
+        "development of the customer vehicle fleet management dashboard",
+        "design of detailed trip views for each vehicle",
+        "development of consolidated data charts for fuel consumption, driver behavior, and more"
+      ]
     },
     {
       "company": "Enedis",
@@ -200,10 +184,7 @@
       "role": "Software Developer",
       "contract": "Permanent - Full time",
       "year": 2012,
-      "period": {
-        "from": "2012-10",
-        "to": "2014-10"
-      },
+      "period": { "from": "2012-10", "to": "2014-10" },
       "skills": [
         "Java EE",
         "AspectJ",
@@ -213,7 +194,12 @@
         "SOAP"
       ],
       "shortDescription": "(formerly ErDF) the french HydroQuébec",
-      "description": "In the middle of Linky \"smart current meters\" deployment, I participated in the development of the back-office for 34 million customers, in order to support each customer during the deployment of their new current meter."
+      "description": "In the middle of Linky \"smart current meters\" deployment, I participated in the development of the back-office for 34 million customers, in order to support each customer during the deployment of their new current meter.",
+      "contributions": [
+        "development of the meter reading point management portal",
+        "integration of the new portal with the existing system",
+        "optimization of various database queries using caching (L2)"
+      ]
     }
   ]
 }
