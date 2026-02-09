@@ -201,5 +201,37 @@
         "optimization of various database queries using caching (L2)"
       ]
     }
+  ],
+  "educations": [
+    {
+      "location": "Paris, France",
+      "school": "Sorbonne Unisersity - Pierre and Marie Curie",
+      "degree": "Bachelor’s & Master’s Degree",
+      "specialization": "Computer Science - Software Engineering",
+      "period": {
+        "from": "2008",
+        "to": "2012"
+      }
+    },
+    {
+      "location": "Paris, France",
+      "school": "Turgot High School",
+      "degree": "Advanced Technician Certificate",
+      "specialization": "Computer Science for Management (Information Systems)",
+      "period": {
+        "from": "2006",
+        "to": "2008"
+      }
+    },
+    {
+      "location": "Paris, France",
+      "school": "Francs Bourgeois High School",
+      "degree": "High School Diploma",
+      "specialization": "Computer Science for Management (Information Systems)",
+      "period": {
+        "from": "2000",
+        "to": "2006"
+      }
+    }
   ]
 }

@@ -88,3 +88,14 @@ body(class="print:m-0 print:bg-transparent bg-[#606368] m-6 md:m-12")
                                     li.text-right
                                         span.mr-4 &middot;
                                         span= contribution
+
+        section.my-12.border-b.border-gray-300
+
+        section.flex.flex-col.gap-8
+            each education in educations
+                div.flex.flex-col.gap-2
+                    div
+                        div.font-bold #{education.degree}
+                        div #{education.specialization}
+                        div.text-gray-300.italic #{education.location} &middot; #{period(education.period.from)} - #{period(education.period.to)}
+                        div.font-bold #{education.school}

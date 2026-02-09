@@ -13,7 +13,10 @@
     "*Avec* un permis de travail ouvert",
     "Je parle *Français* et *Anglais*"
   ],
-  "phones": ["+33 6 30 78 66 39", "+1 (438) 519-3538"],
+  "phones": [
+    "+33 6 30 78 66 39",
+    "+1 (438) 519-3538"
+  ],
   "email": "hebert.alex+pro@gmail.com",
   "social": [
     "github.com/alexandrehebert"
@@ -48,7 +51,7 @@
       "company": "Qiara",
       "location": "Paris, France",
       "role": "Développeur Fullstack Senior · Responsable Technique",
-      "contract": "Freelance",
+      "contract": "Contractuel",
       "year": 2023,
       "period": {
         "from": "2022-03",
@@ -76,7 +79,7 @@
       "company": "Alkemics",
       "location": "Paris, France",
       "role": "Développeur Fullstack Senior",
-      "contract": "Freelance",
+      "contract": "Contractuel",
       "year": 2021,
       "period": {
         "from": "2020-08",
@@ -100,7 +103,7 @@
       "company": "Qare",
       "location": "Paris, France",
       "role": "Développeur Fullstack Senior",
-      "contract": "Freelance",
+      "contract": "Contractuel",
       "year": 2020,
       "period": {
         "from": "2019-11",
@@ -124,8 +127,8 @@
     {
       "company": "Virtuo",
       "location": "Paris, France",
-      "role": "Développeur Fullstack Senior · Freelance",
-      "contract": "Freelance",
+      "role": "Développeur Fullstack Senior · Contractuel",
+      "contract": "Contractuel",
       "year": 2019,
       "period": {
         "from": "2018-11",
@@ -152,7 +155,7 @@
       "company": "Frichti",
       "location": "Paris, France",
       "role": "Développeur Fullstack Senior",
-      "contract": "Freelance",
+      "contract": "Contractuel",
       "year": 2018,
       "period": {
         "from": "2017-11",
@@ -274,6 +277,29 @@
         "intégration du nouveau portail avec l'existant",
         "optimisation des différentes requêtes avec mise en cache (L2)"
       ]
+    }
+  ],
+  "educations": [
+    {
+      "school": "Université Sorbonne - Pierre and Marie Curie",
+      "degree": "Licence & Master",
+      "specialization": "Développement d'Applications",
+      "location": "Paris, France",
+      "period": { "from": "2008", "to": "2012" }
+    },
+    {
+      "school": "Lycée Turgot",
+      "degree": "Brevet de Technicien Supérieur",
+      "specialization": "Informatique de Gestion",
+      "location": "Paris, France",
+      "period": { "from": "2006", "to": "2008" }
+    },
+    {
+      "school": "Lycée des Francs Bourgeois",
+      "degree": "Baccalauréat STT",
+      "specialization": "Informatique de Gestion",
+      "location": "Paris, France",
+      "period": { "from": "2000", "to": "2006" }
     }
   ]
 }
