@@ -33,7 +33,6 @@ const converter = new showdown.Converter({
   tables: true,
   tasklists: false,
   ghMentions: false,
-  ghMentionsLink: '',
   smartIndentationFix: true,
   disableForced4SpacesIndentedSublists: true,
   openLinksInNewWindow: false,
