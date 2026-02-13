@@ -1,7 +1,7 @@
 ---
 import "../index.css";
 import favicon from "../favicon.png";
-import { getCvData, locales, md, period, type Locale } from "../lib/cv";
+import { getCvData, locales, md, period, getRawYaml, type Locale } from "../lib/cv";
 
 const { locale = "fr", baseHref = "/" } = Astro.props as {
   locale?: Locale;
@@ -10,6 +10,7 @@ const { locale = "fr", baseHref = "/" } = Astro.props as {
 
 const currentLocale: Locale = locale === "en" ? "en" : "fr";
 const data = getCvData(currentLocale);
+const rawYaml = getRawYaml(currentLocale);
 const ogLocale = currentLocale === "fr" ? "fr" : "en";
 
 const {
@@ -47,6 +48,7 @@ const {
     <meta name="twitter:description" content="Curriculum Vitae" />
     <meta name="twitter:image" content="https://a1exand.re/profile.jpg" />
     <link rel="canonical" href="https://a1exand.re/" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style is:global>
       em {
         font-style: normal;
@@ -58,6 +60,20 @@ const {
 
   <body class="print:m-0 print:bg-transparent bg-[#606368] m-6 md:m-12">
     <div class="print:hidden max-w-4xl mx-auto flex justify-end gap-2 text-center items-end">
+      <button
+        id="pdf-btn"
+        class="px-3 py-1 text-sm transition-colors bg-white/10 hover:bg-white/80"
+        title="Download as PDF"
+      >
+        PDF
+      </button>
+      <button
+        id="view-toggle"
+        class="px-3 py-1 text-sm transition-colors bg-white/10 hover:bg-white/80"
+        title="Toggle view"
+      >
+        YAML
+      </button>
       {locales.map((localeItem) =>
         localeItem === currentLocale ? (
           <div class="w-14 bg-white/80 py-1 px-4">{localeItem}</div>
@@ -72,7 +88,8 @@ const {
       )}
     </div>
 
-    <div class="print:p-0 print:bg-transparent bg-white max-w-4xl mx-auto p-6 md:p-12">
+    <div class="print:bg-transparent bg-white max-w-4xl mx-auto">
+      <div id="cv-view" class="print:p-0 p-6 md:p-12">
       <section class="flex flex-col sm:flex-row justify-between">
         <div class="mb-4">
           <h1 class="text-2xl font-bold text-center md:text-left">{title}</h1>
@@ -167,6 +184,36 @@ const {
           </div>
         ))}
       </section>
+      </div>
+
+      <div id="yaml-view" class="hidden">
+        <pre class="bg-gray-50 p-4 border border-gray-200 overflow-x-auto text-sm text-gray-800 font-mono leading-relaxed">{rawYaml}</pre>
+      </div>
     </div>
+
+    <script>
+      const pdfBtn = document.getElementById("pdf-btn");
+      const toggle = document.getElementById("view-toggle");
+      const cvView = document.getElementById("cv-view");
+      const yamlView = document.getElementById("yaml-view");
+
+      pdfBtn?.addEventListener("click", () => {
+        const element = document.querySelector(".print\\:p-0");
+        const opt = {
+          margin: 3,
+          filename: `resume-${document.documentElement.lang}.pdf`,
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2 },
+          jsPDF: { orientation: "portrait", unit: "mm", format: "a4" },
+        };
+        html2pdf().set(opt).from(element).save();
+      });
+
+      toggle?.addEventListener("click", () => {
+        cvView?.classList.toggle("hidden");
+        yamlView?.classList.toggle("hidden");
+        toggle.textContent = cvView?.classList.contains("hidden") ? "Formatted" : "YAML";
+      });
+    </script>
   </body>
 </html>

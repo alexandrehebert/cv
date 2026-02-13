@@ -9,6 +9,8 @@ import frYaml from "../data/fr.yaml?raw";
 export type Locale = "en" | "fr";
 export const locales: Locale[] = ["en", "fr"];
 
+const rawYamlByLocale = { en: enYaml, fr: frYaml } as const;
+
 const dataEn = load(enYaml) as Record<string, unknown>;
 const dataFr = load(frYaml) as Record<string, unknown>;
 const dataByLocale = { en: dataEn, fr: dataFr } as const;
@@ -35,4 +37,8 @@ export function period(locale: Locale, date?: string): string {
   }
 
   return date;
+}
+
+export function getRawYaml(locale: Locale): string {
+  return rawYamlByLocale[locale] ?? rawYamlByLocale.en;
 }
