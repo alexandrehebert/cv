@@ -10,11 +10,51 @@ import frYaml from "../data/fr.yaml?raw";
 export type Locale = "en" | "fr";
 export const locales: Locale[] = ["en", "fr"];
 
+export interface Experience {
+  company: string;
+  location: string;
+  role: string;
+  contract: string;
+  year: string;
+  period: {
+    from: string;
+    to: string;
+  };
+  shortDescription: string;
+  description: string;
+  skills?: string[];
+  contributions?: string[];
+}
+
+export interface Education {
+  school: string;
+  location: string;
+  degree: string;
+  specialization: string;
+  period: {
+    from: string;
+    to: string;
+  };
+}
+
+export interface CvData {
+  title: string;
+  subTitle: string;
+  name: string;
+  description: string;
+  skills: string[];
+  details: string[];
+  phones: string[];
+  email: string;
+  social: string[];
+  experiences: Experience[];
+  educations: Education[];
+}
+
 const rawYamlByLocale = { en: enYaml, fr: frYaml } as const;
 
-// js-yaml v4 uses safe loading by default, but being explicit for clarity
-const dataEn = load(enYaml) as Record<string, unknown>;
-const dataFr = load(frYaml) as Record<string, unknown>;
+const dataEn = load(enYaml) as CvData;
+const dataFr = load(frYaml) as CvData;
 const dataByLocale = { en: dataEn, fr: dataFr } as const;
 const dateLocales = { fr, en } as const;
 
@@ -37,8 +77,6 @@ const converter = new showdown.Converter({
   disableForced4SpacesIndentedSublists: true,
   openLinksInNewWindow: false,
 });
-
-export type CvData = typeof dataEn;
 
 export function getCvData(locale: Locale): CvData {
   return dataByLocale[locale] ?? dataEn;
