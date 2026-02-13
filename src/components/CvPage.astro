@@ -198,7 +198,15 @@ const {
       const yamlView = document.getElementById("yaml-view");
 
       pdfBtn?.addEventListener("click", () => {
-        const element = document.querySelector(".print\\:p-0");
+        const element = document.getElementById("cv-view");
+        const wasHidden = cvView?.classList.contains("hidden");
+        
+        // Temporarily show the formatted view if it's hidden
+        if (wasHidden) {
+          cvView?.classList.remove("hidden");
+          yamlView?.classList.add("hidden");
+        }
+        
         const opt = {
           margin: 3,
           filename: `resume-${document.documentElement.lang}.pdf`,
@@ -206,7 +214,14 @@ const {
           html2canvas: { scale: 2 },
           jsPDF: { orientation: "portrait", unit: "mm", format: "a4" },
         };
-        html2pdf().set(opt).from(element).save();
+        
+        html2pdf().set(opt).from(element).save().then(() => {
+          // Restore previous view state
+          if (wasHidden) {
+            cvView?.classList.add("hidden");
+            yamlView?.classList.remove("hidden");
+          }
+        });
       });
 
       toggle?.addEventListener("click", () => {
