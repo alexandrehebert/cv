@@ -105,6 +105,9 @@ dist
 .temp
 .cache
 
+# Astro cache
+.astro
+
 # Docusaurus cache and generated files
 .docusaurus
 

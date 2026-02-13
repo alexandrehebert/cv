@@ -1,0 +1,290 @@
+---
+title: Responsable Technique - Développeur Fullstack
+subTitle: "*11 années* d'experience"
+name: Alexandre Hebert
+description: |-
+  Informaticien passionné, plus précisément *développeur full stack*, doté d’une grande expérience des méthodologies agiles, cela fait plus de dix ans que je mets mes compétences au service de startups ou de multinationales, dans des *domaines métiers* aussi *divers* que *variés*.
+
+  J'ai eu la chance d'intégrer de nombreuses équipes, suivant ou non certains principes des *méthodologies* dites *agiles*, avec *plusieurs casquettes* pouvant aller de lead developer à Scrum master en parallèle de mes activités de développement, et même CTO pendant une courte période. Par ailleurs, plus encore que mes solides expériences et compétences en développement, je suis *adaptable* et je maintiens une volonté d'*amélioration continue*.
+
+  Enfin, j'ai à cœur d'apporter toujours autant de *bonne humeur* que de *bonnes pratiques* (tests, intégration continue, et cetera) où que j'aille, où que je travaille !
+skills:
+- Typescript
+- Node
+- React
+details:
+- Installé à *Montréal*, Canada
+- "*Avec* un permis de travail ouvert"
+- Je parle *Français* et *Anglais*
+phones:
+- "+33 6 30 78 66 39"
+- "+1 (438) 519-3538"
+email: hebert.alex@gmail.com
+social:
+- github.com/alexandrehebert
+experiences:
+- company: Financière Fairstone
+  location: Montréal, Québec, Canada
+  role: Développeur Fullstack Senior · Responsable Technique
+  contract: CDI · Temps plein
+  year: 2024
+  period:
+    from: 2023-12
+    to: Aujourd'hui
+  skills:
+  - Typescript
+  - Serverless (AWS)
+  - Dynamo
+  - React
+  shortDescription: un leader du prêt à la consommation
+  description: Je suis intervenu avec l'ensemble de l'équipe de développement, dans
+    la modernisation de la plateforme de prêt à la consommation. J'ai ainsi participé
+    au développement de différentes briques logicielles, tantôt techniques, tantôt
+    fonctionnelles, afin d'améliorer l'expérience utilisateur chez Fairstone.
+  contributions:
+  - conception et participation au développement d'un service de lecture de spécimens
+    de chèques
+  - conception du service de récupération et lecture des enregistrements d'appels
+  - conception et développement du service d'onboarding de nouveaux marchands
+  - migration d'une bibliothèque de composants react vers Vite
+- company: Qiara
+  location: Paris, France
+  role: Développeur Fullstack Senior · Responsable Technique
+  contract: Contractuel
+  year: 2023
+  period:
+    from: 2022-03
+    to: 2023-09
+  skills:
+  - Typescript
+  - Node
+  - Next
+  - PostgreSQL
+  - Scaleway
+  shortDescription: un Google Nest européen
+  description: Dans un contexte de lancement produit, j'ai contribué au développement
+    du site permettant la prise des toutes premières commandes. J'ai également bootstrapé
+    un back-office permettant de gérer les nouveaux clients, leurs commandes ou encore
+    l'installation de leur système.
+  contributions:
+  - développement du back-office à destination du service client et du personnel
+  - mise en place de batches de logistique pour l'envoi des colis
+  - conception du site web vitrine, implémentation du design system, avec landing
+    page et panier
+  - implémentation des web hooks de synchronisation avec le service de paiement
+  - développement du service d'édition de factures
+  - développement du service d'envoi de mails transactionnels
+- company: Alkemics
+  location: Paris, France
+  role: Développeur Fullstack Senior
+  contract: Contractuel
+  year: 2021
+  period:
+    from: 2020-08
+    to: 2021-02
+  skills:
+  - Typescript
+  - Python
+  - React
+  shortDescription: "(désormais Salsify) un agrégateur de données pour la grande distribution"
+  description: En pleine fusion avec Salsify, j'ai développé une toute nouvelle interface
+    de gestion de permissions à destination des clients, leur permettant de choisir
+    avec finesse "qui" peut modifier quel produit, et comment. J'ai ensuite été amené
+    à développer l'historique des modifications, afin de rendre les écrans et dashboard
+    plus intuitifs et plus fluides.
+  contributions:
+  - modification de l'interface de lecture/écriture des données produit
+  - développement de l'interface d'historique des modifications de données produit
+  - développement de l'interface d'administration des clients
+  - développement de l'interface du module de permissions
+- company: Qare
+  location: Paris, France
+  role: Développeur Fullstack Senior
+  contract: Contractuel
+  year: 2020
+  period:
+    from: 2019-11
+    to: 2020-07
+  skills:
+  - Typescript
+  - Node
+  - React
+  - Redis
+  - Mongo
+  shortDescription: "(désormais HealthHero) un concurrent solide de Dialogue"
+  description: Alors que Qare faisait figure d'outsider, j’ai contribué au développement
+    de leur interface de gestion de patientèle. Par la suite, j'ai pu participer au
+    développement de l’interface de prise de rendez-vous en ligne, afin de convaincre
+    davantage de médecins d'utiliser la solution.
+  contributions:
+  - développement de l'interface de gestion de patientèle
+  - modification du module de prise de rendez-vous en ligne
+  - modification du service d'édition d'ordonnance
+- company: Virtuo
+  location: Paris, France
+  role: Développeur Fullstack Senior
+  contract: Contractuel
+  year: 2019
+  period:
+    from: 2018-11
+    to: 2019-10
+  skills:
+  - Typescript
+  - Node
+  - React
+  - Mongo
+  - Heroku
+  shortDescription: l’équivalent français de Communauto
+  description: Après une levée de fond réussie, Virtuo a pu m'offrir l'opportunité
+    de développer des briques du back-office et plus particulièrement la gestion des
+    dommages liés à leurs deux mille véhicules afin d'optimiser les coûts liés aux
+    dommages. J'ai également développé l’intégration avec des sites de location tiers,
+    rendant Virtuo plus visible et contribuant à l'augmentation du nombre de réservations.
+  contributions:
+  - développement de l'interface de gestion des dommages liés au véhicules
+  - intégration avec des sites de location tiers
+  - évolution du site de reservation de véhicule
+  - évolution du site web à destination des professionnels
+  - modification du service d'envoi de mails transactionnels
+- company: Frichti
+  location: Paris, France
+  role: Développeur Fullstack Senior
+  contract: Contractuel
+  year: 2018
+  period:
+    from: 2017-11
+    to: 2018-10
+  skills:
+  - Node
+  - React
+  - RabbitMQ
+  - Kubernetes
+  - PostgreSQL
+  shortDescription: "(désormais Gorillas) un Uber Eat avec des cuisines"
+  description: Dans un contexte d'expansion de Frichti vers plusieurs villes françaises,
+    j’ai principalement développé leur planning de livraison afin de gérer une flotte
+    de centaines de livreurs, et la synchronisation des données clients avec divers
+    outils marketing afin de mieux identifier et cibler leurs milliers de clients.
+  contributions:
+  - développement du planning de livraisons intégré à Shiftplan
+  - modification du backend de l'application à destination des livreurs
+  - développement de batches de synchronisation avec Segment
+  - apports divers sur le site existant
+- company: KinTribe
+  location: Paris, France
+  role: Développeur Fullstack Senior · CTO
+  contract: CDI · Temps plein
+  year: 2017
+  period:
+    from: 2016-02
+    to: 2017-10
+  skills:
+  - Node
+  - Angular 2
+  - Mongo
+  - Seneca
+  - AWS
+  shortDescription: un assistant au recrutement
+  description: Sur un marché où les profils techniques sont dits "pénuriques", j’ai
+    contribué au développement d'un outil de scoring de profils techniques capable
+    de mesurer la propension de ces derniers à quitter leur emploi actuel, ou non.
+    J'ai également développé une extension chrome permettant au recruteur de gagner
+    du temps et d’accéder aux données et au scoring d’un profil depuis n'importe quelle
+    page LinkedIn.
+  contributions:
+  - développement d'une extension chrome pour LinkedIn
+  - création du dashboard de gestion des processus de recrutement
+  - création du vivier de profils
+- company: Canal Plus
+  location: Issy-les-Moulineaux, France
+  role: Développeur Fullstack
+  contract: CDI · Temps plein
+  year: 2017
+  period:
+    from: 2017-04
+    to: 2017-07
+  skills:
+  - Javascript
+  - Flow
+  - React
+  - Redux
+  shortDescription: un décodeur TV
+  description: Alors que Canal Plus était sur le point d'annoncer le lancement de
+    leur tout nouveau décodeur TV, j’ai participé au développement de l’interface
+    du décodeur, de la présentation et la sélection des chaînes, jusqu’à l’interface
+    de communication avec les briques basses du décodeur. L'objectif étant de se démarquer
+    des concurrents en proposant une interface intuitive, agréable à l'oeil, et fluide.
+  contributions:
+  - modification du clavier de saisie virtuel
+  - développement de l'interface de selection de chaînes
+  - modification de l'overlay lors de la lecture
+  - implémentation de la communication avec des fournisseurs de chaînes externes
+- company: Arval · BNP Paribas
+  location: Paris, France
+  role: Développeur Fullstack
+  contract: CDI · Temps plein
+  year: 2014
+  period:
+    from: 2014-11
+    to: 2016-01
+  skills:
+  - Java
+  - SpringBoot
+  - RabbitMQ
+  - Angular
+  - Chart
+  shortDescription: une interface de gestion de parc automobile
+  description: Afin d'optimiser, et de diminuer les risques liés à son parc de 700
+    000 véhicules, j'ai développé l’interface de gestion du parc automobile, à la
+    présentation des données consolidées sous la forme de diagrammes, ainsi qu’à la
+    communication avec les 700.000 véhicules.
+  contributions:
+  - développement du dashboard de gestion de parc par client
+  - conception de vues détaillées des trajets pour chaque véhicule
+  - développement de graphiques de données consolidées de consommation de carburant
+    / comportement des conducteurs / etc.
+- company: Enedis
+  location: Paris · La Défense, France
+  role: Développeur
+  contract: CDI · Temps plein
+  year: 2012
+  period:
+    from: 2012-10
+    to: 2014-10
+  skills:
+  - Java EE
+  - AspectJ
+  - Weblogic
+  - Oracle
+  - JQuery
+  - SOAP
+  shortDescription: "(anciennement ErDF) le HydroQuébec français"
+  description: En plein déploiement des nouveaux compteurs intelligents Linky, j’ai
+    participé au développement de l’interface de gestion des 34 millions de clients,
+    afin d'accompagner au mieux chaque client lors du déploiement de son nouveau compteur.
+  contributions:
+  - développement du portail de gestion des points de relève
+  - intégration du nouveau portail avec l'existant
+  - optimisation des différentes requêtes avec mise en cache (L2)
+educations:
+- school: Sorbonne Université - Pierre & Marie Curie
+  degree: Licence & Master
+  specialization: Développement d'Applications
+  location: Paris, France
+  period:
+    from: '2008'
+    to: '2012'
+- school: Lycée Turgot
+  degree: Brevet de Technicien Supérieur
+  specialization: Informatique de Gestion
+  location: Paris, France
+  period:
+    from: '2006'
+    to: '2008'
+- school: Lycée des Francs Bourgeois
+  degree: Baccalauréat STT
+  specialization: Informatique de Gestion
+  location: Paris, France
+  period:
+    from: '2000'
+    to: '2006'

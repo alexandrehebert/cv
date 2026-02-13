@@ -1,16 +1,9 @@
 {
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "dist",
-    "target": "es2018",
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "strict": true,
-    "noImplicitAny": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
+    "types": ["node", "js-yaml"],
     "resolveJsonModule": true,
-    "types": ["node"]
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   }
 }

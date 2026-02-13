@@ -1,0 +1,13 @@
+---
+import CvPage from "../components/CvPage.astro";
+import { locales, type Locale } from "../lib/cv";
+
+export function getStaticPaths() {
+  return locales.map((locale) => ({ params: { locale } }));
+}
+
+const { locale } = Astro.params;
+const baseHref = import.meta.env.BASE_URL ?? "/";
+---
+
+<CvPage locale={locale as Locale} baseHref={baseHref} />

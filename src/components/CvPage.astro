@@ -1,0 +1,172 @@
+---
+import "../index.css";
+import favicon from "../favicon.png";
+import { getCvData, locales, md, period, type Locale } from "../lib/cv";
+
+const { locale = "fr", baseHref = "/" } = Astro.props as {
+  locale?: Locale;
+  baseHref?: string;
+};
+
+const currentLocale: Locale = locale === "en" ? "en" : "fr";
+const data = getCvData(currentLocale);
+const ogLocale = currentLocale === "fr" ? "fr" : "en";
+
+const {
+  title,
+  subTitle,
+  name,
+  description,
+  skills,
+  details,
+  phones,
+  email,
+  social,
+  experiences,
+  educations,
+} = data;
+---
+
+<html lang={currentLocale}>
+  <head>
+    <title>Alexandre Hebert - Curriculum Vitae</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href={baseHref} />
+    <link rel="shortcut icon" type="image/png" href={favicon.src} />
+    <link rel="icon" type="image/png" href={favicon.src} />
+    <meta name="description" content="Alexandre Hebert - Curriculum Vitae" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Alexandre" />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:title" content="Alexandre Hebert" />
+    <meta property="og:description" content="Curriculum Vitae" />
+    <meta property="og:image" content="https://a1exand.re/profile.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Alexandre Hebert" />
+    <meta name="twitter:description" content="Curriculum Vitae" />
+    <meta name="twitter:image" content="https://a1exand.re/profile.jpg" />
+    <link rel="canonical" href="https://a1exand.re/" />
+    <style is:global>
+      em {
+        font-style: normal;
+        font-weight: bold;
+        color: black;
+      }
+    </style>
+  </head>
+
+  <body class="print:m-0 print:bg-transparent bg-[#606368] m-6 md:m-12">
+    <div class="print:hidden max-w-4xl mx-auto flex justify-end gap-2 text-center items-end">
+      {locales.map((localeItem) =>
+        localeItem === currentLocale ? (
+          <div class="w-14 bg-white/80 py-1 px-4">{localeItem}</div>
+        ) : (
+          <a
+            class="block w-14 transition-colors bg-white/10 hover:bg-white/80 py-1 px-4"
+            href={localeItem}
+          >
+            {localeItem}
+          </a>
+        )
+      )}
+    </div>
+
+    <div class="print:p-0 print:bg-transparent bg-white max-w-4xl mx-auto p-6 md:p-12">
+      <section class="flex flex-col sm:flex-row justify-between">
+        <div class="mb-4">
+          <h1 class="text-2xl font-bold text-center md:text-left">{title}</h1>
+          <hr class="border-none my-2" />
+          <div class="text-gray-500" set:html={md(subTitle)}></div>
+          <div class="flex gap-2">
+              {skills.map((skill, index) => (
+                <span>
+                  {skill}
+                  {index < skills.length - 1 ? " ·" : ""}
+                </span>
+              ))}
+          </div>
+        </div>
+
+        <div class="sm:text-right">
+          <div class="font-bold">{name}</div>
+          {details.map((detail) => (
+            <div class="text-gray-500" set:html={md(detail)}></div>
+          ))}
+          <hr class="border-none my-2" />
+          {phones.map((phone) => (
+            <div>{phone}</div>
+          ))}
+          <div>{email}</div>
+          {social.map((link) => (
+            <div>{link}</div>
+          ))}
+        </div>
+      </section>
+
+      <section class="my-12 border-b border-gray-300"></section>
+
+      <section class="flex flex-col gap-4 text-gray-500" set:html={md(description)}></section>
+
+      <section class="my-12 border-b border-gray-300"></section>
+
+      <section class="flex flex-col gap-8">
+        {experiences.map((experience) => (
+          <div class="flex flex-col gap-2">
+            <div>
+              <div class="font-bold">{experience.role}</div>
+              <div class="text-gray-300 italic capitalize">
+                {experience.contract} &middot; {period(currentLocale, experience.period.from)} -
+                {" "}
+                {period(currentLocale, experience.period.to)}
+              </div>
+              <div>
+                <span class="font-bold">{experience.company}</span>, {experience.shortDescription}
+              </div>
+              <div class="flex flex-wrap gap-x-2">
+                  {experience.skills.map((skill, index) => (
+                    <span>
+                      {skill}
+                      {index < experience.skills.length - 1 ? " ·" : ""}
+                    </span>
+                  ))}
+              </div>
+            </div>
+            <div set:html={md(experience.description)}></div>
+            {experience.contributions ? (
+              <div class="text-gray-500">
+                <ul class="ml-4 list-none flex flex-col items-end">
+                  {experience.contributions.map((contribution) => (
+                    <li class="text-right">
+                      <span class="mr-4">&middot;</span>
+                      <span>{contribution}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+          </div>
+        ))}
+      </section>
+
+      <section class="my-12 border-b border-gray-300"></section>
+
+      <section class="flex flex-col gap-8">
+        {educations.map((education) => (
+          <div class="flex flex-col gap-2">
+            <div>
+              <div class="font-bold">{education.degree}</div>
+              <div>{education.specialization}</div>
+              <div class="text-gray-300 italic">
+                {education.location} &middot; {period(currentLocale, education.period.from)} -
+                {" "}
+                {period(currentLocale, education.period.to)}
+              </div>
+              <div class="font-bold">{education.school}</div>
+            </div>
+          </div>
+        ))}
+      </section>
+    </div>
+  </body>
+</html>

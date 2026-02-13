@@ -1,0 +1,76 @@
+# Copilot Instructions for CV Project
+
+## Project Overview
+This is a static resume site that converts structured JSON data into beautiful HTML pages using Astro (Vite), TypeScript, and Tailwind CSS.
+
+## Key Principles
+- **Keep it simple**: Maintain minimal dependencies and straightforward build process
+- **Static generation**: No runtime server needed, just static files
+- **Type safety**: Always use TypeScript for type checking
+- **Multilingual first**: Support English and French seamlessly
+
+## Architecture
+
+### Data Layer
+- Resume content stored in YAML files: `src/data/en.yaml`, `src/data/fr.yaml`
+- Data structure includes: personal info, skills, experiences, education, etc.
+- Each section supports markdown formatting via showdown converter
+
+### Template Layer
+- Astro templates in `src/components/CvPage.astro`
+- Pages in `src/pages/index.astro` and `src/pages/[locale].astro`
+- Locale-specific data is selected at build time
+
+### Styling Layer
+- Tailwind CSS with custom config in `tailwind.config.js`
+- Astro templates scanned for Tailwind classes
+- Print-optimized styles for PDF export
+
+### Build Pipeline
+- Astro builds static HTML via Vite
+- `src/pages/[locale].astro` generates `/en/` and `/fr/`
+- Output: production-ready static files in `dist/`
+
+## Key Files
+- `src/components/CvPage.astro` - Main template with layout and content structure
+- `src/pages/index.astro` - Default locale page
+- `src/pages/[locale].astro` - Locale pages
+- `src/lib/cv.ts` - Locale helpers + markdown/date utilities
+- `src/index.css` - Tailwind directives
+- `package.json` - Dependencies and build scripts
+
+## Common Tasks
+
+### Adding Resume Content
+1. Edit `src/data/en.yaml` (English) or `src/data/fr.yaml` (French)
+2. Follow existing data structure for consistency
+3. Use markdown syntax in text fields for rich formatting
+
+### Modifying Template
+1. Edit `src/components/CvPage.astro`
+2. Use Astro templating (JS expressions, maps, conditionals)
+3. Ensure classes align with Tailwind utility names
+4. Run `npm run dev` to test changes with HMR
+
+### Styling Changes
+1. Update `src/index.css` or modify Tailwind config
+2. Tailwind scans Astro files for used classes
+3. No manual PurgeCSS configuration needed
+
+## Development Workflow
+1. Make changes to data or templates
+2. Run `npm run dev` for fast feedback (HMR)
+3. Run `npm run build` to generate output
+4. Use `npm run preview` to preview production build
+5. Test both language versions
+
+## Performance Considerations
+- Static generation means fast deploy and serve
+- Zero runtime dependencies
+- Minimal CSS (tree-shaken by Tailwind)
+- One HTML file per language route
+
+## Future Enhancement Areas
+- Further performance optimization
+- Optional component extraction
+- Data validation improvements
