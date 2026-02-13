@@ -140,14 +140,16 @@ const {
               <div>
                 <span class="font-bold">{experience.company}</span>, {experience.shortDescription}
               </div>
+              {experience.skills && experience.skills.length > 0 && (
               <div class="flex flex-wrap gap-x-2">
                   {experience.skills.map((skill, index) => (
                     <span>
                       {skill}
-                      {index < experience.skills.length - 1 ? " ·" : ""}
+                      {index < experience.skills!.length - 1 ? " ·" : ""}
                     </span>
                   ))}
               </div>
+              )}
             </div>
             <div set:html={md(experience.description)}></div>
             {experience.contributions ? (
@@ -192,6 +194,8 @@ const {
     </div>
 
     <script>
+      declare const html2pdf: any;
+      
       const pdfBtn = document.getElementById("pdf-btn");
       const toggle = document.getElementById("view-toggle");
       const cvView = document.getElementById("cv-view");
