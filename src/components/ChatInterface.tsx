@@ -3,8 +3,8 @@ import { DefaultChatTransport } from "ai";
 import ReactMarkdown from "react-markdown";
 
 import { useState, useEffect } from "react";
-import { chatTranslations } from "./chatTranslations";
-type Locale = keyof typeof chatTranslations;
+import { translations } from "./translations";
+type Locale = keyof typeof translations;
 
 export default function ChatInterface() {
   const [locale, setLocale] = useState<Locale | undefined>(undefined);
@@ -28,7 +28,7 @@ export default function ChatInterface() {
   });
 
   // Use fallback to 'en' for t if locale is not set yet
-  const t = chatTranslations[locale || "en"];
+  const t = translations[locale || "en"];
 
   const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
