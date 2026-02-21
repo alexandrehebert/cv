@@ -1,7 +1,12 @@
 ---
 import ChatInterface from "../components/ChatInterface";
+import "../index.css";
+import favicon from "../favicon.png";
 
 export const prerender = false;
+
+const baseHref = import.meta.env.BASE_URL ?? "/";
+const ogLocale = "en";
 ---
 
 <!doctype html>
@@ -9,8 +14,22 @@ export const prerender = false;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Chat with AI about Alexandre Hebert's career and experience" />
-    <title>Alexandre Hebert - Career Chat</title>
+    <base href={baseHref} />
+    <link rel="shortcut icon" type="image/png" href={favicon.src} />
+    <link rel="icon" type="image/png" href={favicon.src} />
+    <meta name="description" content="Chat with Alexandre Hebert's resume - Ask questions about his career and experience" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Alexandre" />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:title" content="Alexandre Hebert - Resume Chat" />
+    <meta property="og:description" content="Chat with Alexandre's resume - Ask questions about his career and experience" />
+    <meta property="og:image" content="https://a1exand.re/profile.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Alexandre Hebert - Resume Chat" />
+    <meta name="twitter:description" content="Chat with Alexandre's resume - Ask questions about his career and experience" />
+    <meta name="twitter:image" content="https://a1exand.re/profile.jpg" />
+    <link rel="canonical" href="https://a1exand.re/" />
+    <title>Alexandre Hebert - Resume Chat</title>
   </head>
   <body>
     <ChatInterface client:load />
