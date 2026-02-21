@@ -157,6 +157,7 @@ export default function ChatInterface() {
                           li: ({ node, ...props }) => <li className="mb-0" {...props} />,
                           strong: ({ node, ...props }) => <strong className="font-semibold" {...props} />,
                           em: ({ node, ...props }) => <em className="italic" {...props} />,
+                          hr: ({ node, ...props }) => <hr className="my-4" {...props} />,
                           code: ({ node, inline, ...props }: any) => 
                             inline ? (
                               <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono" {...props} />
