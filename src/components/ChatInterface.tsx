@@ -29,12 +29,12 @@ export default function ChatInterface() {
       <header className="sticky top-0 z-20 border-b border-white/30 bg-white/70 backdrop-blur">
         <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
-            <div className="text-xs uppercase tracking-[0.3em] text-gray-600">Career Chat</div>
+            <div className="text-xs uppercase tracking-[0.3em] text-gray-600">Resume</div>
             <h1 className="text-2xl md:text-3xl text-gray-900">
               Alexandre Hebert
             </h1>
             <p className="text-sm text-gray-600">
-              Ask anything about Alexandre's career
+              Ask me about his experience and skills
             </p>
           </div>
           <div className="flex flex-wrap gap-2 items-center">
@@ -66,7 +66,7 @@ export default function ChatInterface() {
           {!hasMessages && (
             <div className="min-h-[65vh] flex items-center justify-center">
               <div className="w-full max-w-3xl rounded-lg border border-white/60 bg-white/90 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.45)] backdrop-blur p-8 text-center">
-                <div className="text-xs uppercase tracking-[0.3em] text-gray-500">Career Chat</div>
+                <div className="text-xs uppercase tracking-[0.3em] text-gray-500">Resume</div>
                     <div className="mt-4 flex items-center justify-center">
                       <span className="inline-flex h-12 w-12 items-center justify-center rounded-md border border-gray-200 bg-gray-50">
                         <svg
@@ -83,18 +83,18 @@ export default function ChatInterface() {
                       </span>
                     </div>
                     <h2 className="text-2xl font-semibold text-gray-900 mt-4">
-                      Welcome
+                      Alexandre's Resume
                     </h2>
                 <p className="text-gray-600 mt-2">
-                  I'm here to answer all your questions about Alexandre's career
+                  I am Alexandre's resume. Ask about Alexandre's experience, skills, or roles.
                 </p>
                 <div className="mt-5 text-sm text-gray-500 space-y-2">
                   <p className="font-medium">Try asking:</p>
                   <ul className="list-disc list-inside text-left max-w-md mx-auto">
-                    <li>What technologies does Alexandre specialize in?</li>
-                    <li>Tell me about Alexandre's experience at Fairstone Bank</li>
-                    <li>What makes Alexandre a great developer?</li>
-                    <li>Quelle est l'expérience d'Alexandre en français?</li>
+                    <li>What are Alexandre's main technical skills?</li>
+                    <li>Tell me about his experience at Fairstone Bank</li>
+                    <li>What companies has Alexandre worked for?</li>
+                    <li>Parlez-moi de l'experience d'Alexandre</li>
                   </ul>
                 </div>
                 <form
@@ -104,7 +104,7 @@ export default function ChatInterface() {
                   <input
                     type="text"
                     name="message"
-                    placeholder="Ask about Alexandre's career..."
+                    placeholder="Ask about the resume..."
                     className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
                     disabled={isLoading}
                     autoComplete="off"
@@ -143,7 +143,7 @@ export default function ChatInterface() {
                   }`}
                 >
                   <div className="text-sm font-medium mb-1 opacity-75">
-                    {message.role === "user" ? "You" : "AI Assistant"}
+                    {message.role === "user" ? "You" : "Resume"}
                   </div>
                   {message.role === "user" ? (
                     <div className="whitespace-pre-wrap">{messageText}</div>
@@ -189,7 +189,7 @@ export default function ChatInterface() {
             <div className="flex justify-start">
               <div className="max-w-3xl bg-white text-gray-900 border border-gray-200 shadow-sm rounded-lg px-4 py-3">
                 <div className="text-sm font-medium mb-1 opacity-75">
-                  AI Assistant
+                  Resume
                 </div>
                 <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
@@ -212,7 +212,7 @@ export default function ChatInterface() {
             <input
               type="text"
               name="message"
-              placeholder="Ask about Alexandre's career..."
+              placeholder="Ask about the resume..."
               className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
               disabled={isLoading}
               autoComplete="off"
