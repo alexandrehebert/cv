@@ -2,6 +2,7 @@
 import "../index.css";
 import favicon from "../favicon.png";
 import { getCvData, locales, md, period, getRawYaml, type Locale } from "../lib/cv";
+import { chatTranslations } from "./chatTranslations";
 
 const { locale = "fr", baseHref = "/" } = Astro.props as {
   locale?: Locale;
@@ -247,21 +248,21 @@ const {
         </div>
 
         <aside class="print:hidden h-fit rounded-lg border border-white/60 bg-white/90 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.45)] backdrop-blur p-6 lg:sticky lg:top-24">
-          <div class="text-xs uppercase tracking-[0.3em] text-[var(--cv-muted)]">Career Chat</div>
-          <h2 class="mt-3 text-xl text-[var(--cv-ink)]">Ask about the journey</h2>
+          <div class="text-xs uppercase tracking-[0.3em] text-[var(--cv-muted)]">{currentLocale === "fr" ? "Discussion carrière" : "Career Chat"}</div>
+          <h2 class="mt-3 text-xl text-[var(--cv-ink)]">{chatTranslations[currentLocale].headerSubtitle}</h2>
           <p class="mt-3 text-sm text-[var(--cv-muted)]">
-            The chat assistant speaks both EN and FR. Ask for specifics, deep dives, or context behind any role.
+            {chatTranslations[currentLocale].welcomeDescription}
           </p>
           <div class="mt-4 space-y-2 text-sm text-[var(--cv-muted)]">
-            <div class="rounded-md border border-[var(--cv-ink)]/10 bg-[var(--cv-tint)] px-3 py-2">What projects were most impactful?</div>
-            <div class="rounded-md border border-[var(--cv-ink)]/10 bg-[var(--cv-tint)] px-3 py-2">Which stack feels strongest in 2026?</div>
-            <div class="rounded-md border border-[var(--cv-ink)]/10 bg-[var(--cv-tint)] px-3 py-2">Resume highlights en francais ?</div>
+            {chatTranslations[currentLocale].sampleQuestions.map((q) => (
+              <div class="rounded-md border border-[var(--cv-ink)]/10 bg-[var(--cv-tint)] px-3 py-2">{q}</div>
+            ))}
           </div>
           <a
             href="/"
             class="mt-6 inline-flex w-full items-center justify-center rounded-md bg-[var(--cv-accent)] px-4 py-2 text-sm font-semibold text-white hover:opacity-90"
           >
-            Open the chat UI
+            {currentLocale === "fr" ? "Ouvrir l'interface de chat" : "Open the chat UI"}
           </a>
         </aside>
       </main>
