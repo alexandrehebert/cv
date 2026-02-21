@@ -3,7 +3,7 @@ import { DefaultChatTransport } from "ai";
 import ReactMarkdown from "react-markdown";
 
 export default function ChatInterface() {
-  const { messages, sendMessage, status, error } = useChat({
+  const { messages, sendMessage, status, error, setMessages } = useChat({
     transport: new DefaultChatTransport({ api: '/api/chat' }),
     onError: (err) => {
       console.error('Chat error:', err);
@@ -18,6 +18,10 @@ export default function ChatInterface() {
       sendMessage({ text: message });
       e.currentTarget.reset();
     }
+  };
+
+  const handleNewConversation = () => {
+    setMessages([]);
   };
 
   const isLoading = status === 'submitted';
@@ -38,6 +42,14 @@ export default function ChatInterface() {
             </p>
           </div>
           <div className="flex flex-wrap gap-2 items-center">
+            {hasMessages && (
+              <button
+                onClick={handleNewConversation}
+                className="px-3 py-1.5 text-sm rounded-full border border-gray-900/10 bg-white/70 hover:bg-white transition-colors"
+              >
+                New Conversation
+              </button>
+            )}
             <a
               href="/en"
               className="px-3 py-1.5 text-sm rounded-full border border-gray-900/10 bg-white/70 hover:bg-white"
@@ -88,14 +100,22 @@ export default function ChatInterface() {
                 <p className="text-gray-600 mt-2">
                   I am Alexandre's resume. Ask about Alexandre's experience, skills, or roles.
                 </p>
-                <div className="mt-5 text-sm text-gray-500 space-y-2">
-                  <p className="font-medium">Try asking:</p>
-                  <ul className="list-disc list-inside text-left max-w-md mx-auto">
-                    <li>What are Alexandre's main technical skills?</li>
-                    <li>Tell me about his experience at Fairstone Bank</li>
-                    <li>What companies has Alexandre worked for?</li>
-                    <li>Parlez-moi de l'experience d'Alexandre</li>
-                  </ul>
+                <div className="mt-6 flex flex-wrap gap-2 justify-center max-w-2xl mx-auto">
+                  {[
+                    "What are Alexandre's main technical skills?",
+                    "Tell me about his experience at Fairstone Bank",
+                    "What companies has Alexandre worked for?",
+                    "Parlez-moi de l'expérience d'Alexandre"
+                  ].map((question, index) => (
+                    <button
+                      key={index}
+                      onClick={() => sendMessage({ text: question })}
+                      className="px-4 py-2 text-sm bg-white border border-gray-300 rounded-full hover:bg-gray-50 hover:border-gray-400 transition-colors text-gray-700"
+                      disabled={isLoading}
+                    >
+                      {question}
+                    </button>
+                  ))}
                 </div>
                 <form
                   onSubmit={handleSubmit}
