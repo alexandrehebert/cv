@@ -1,7 +1,18 @@
 ---
-import CvPage from "../components/CvPage.astro";
+import ChatInterface from "../components/ChatInterface";
 
-const baseHref = import.meta.env.BASE_URL ?? "/";
+export const prerender = false;
 ---
 
-<CvPage locale="fr" baseHref={baseHref} />
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Chat with AI about Alexandre Hebert's career and experience" />
+    <title>Alexandre Hebert - Career Chat</title>
+  </head>
+  <body>
+    <ChatInterface client:load />
+  </body>
+</html>

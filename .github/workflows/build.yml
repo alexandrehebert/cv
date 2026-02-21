@@ -1,9 +1,12 @@
 name: Build
 
+# Temporarily disabled
+# on:
+#   push:
+#     branches: [main]
+#   pull_request:
 on:
-  push:
-    branches: [main]
-  pull_request:
+  workflow_dispatch:
 
 jobs:
   build:

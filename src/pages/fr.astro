@@ -1,0 +1,9 @@
+---
+import CvPage from "../components/CvPage.astro";
+
+export const prerender = true;
+
+const baseHref = import.meta.env.BASE_URL ?? "/";
+---
+
+<CvPage locale="fr" baseHref={baseHref} />

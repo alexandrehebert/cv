@@ -1,6 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "jsx": "react-jsx",
     "types": ["node", "js-yaml"],
     "resolveJsonModule": true,
     "esModuleInterop": true,

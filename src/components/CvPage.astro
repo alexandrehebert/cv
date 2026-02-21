@@ -50,144 +50,221 @@ const {
     <meta name="twitter:image" content="https://a1exand.re/profile.jpg" />
     <link rel="canonical" href="https://a1exand.re/" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/yaml.min.js"></script>
     <style is:global>
+      :root {
+        --cv-ink: #121316;
+        --cv-muted: #5f636b;
+        --cv-accent: #2f3338;
+        --cv-paper: #ffffff;
+        --cv-tint: #eef1f6;
+      }
+
+      body {
+        font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+        color: var(--cv-ink);
+      }
+
+      h1,
+      h2,
+      h3 {
+        letter-spacing: -0.02em;
+      }
+
       em {
         font-style: normal;
-        font-weight: bold;
-        color: black;
+        font-weight: 600;
+        color: var(--cv-ink);
       }
     </style>
   </head>
 
-  <body class="print:m-0 print:bg-transparent bg-[#606368] m-6 md:m-12">
-    <div class="print:hidden max-w-4xl mx-auto flex justify-end gap-2 text-center items-end">
-      <button
-        id="pdf-btn"
-        class="px-3 py-1 text-sm transition-colors bg-white/10 hover:bg-white/80"
-        title="Download as PDF"
-      >
-        PDF
-      </button>
-      <button
-        id="view-toggle"
-        class="px-3 py-1 text-sm transition-colors bg-white/10 hover:bg-white/80"
-        title="Toggle view"
-      >
-        YAML
-      </button>
-      {locales.map((localeItem) =>
-        localeItem === currentLocale ? (
-          <div class="w-14 bg-white/80 py-1 px-4">{localeItem}</div>
-        ) : (
-          <a
-            class="block w-14 transition-colors bg-white/10 hover:bg-white/80 py-1 px-4"
-            href={localeItem}
-          >
-            {localeItem}
-          </a>
-        )
-      )}
-    </div>
-
-    <div class="print:bg-transparent bg-white max-w-4xl mx-auto">
-      <div id="cv-view" class="print:p-0 p-6 md:p-12">
-      <section class="flex flex-col sm:flex-row justify-between">
-        <div class="mb-4">
-          <h1 class="text-2xl font-bold text-center md:text-left">{title}</h1>
-          <hr class="border-none my-2" />
-          <div class="text-gray-500" set:html={md(subTitle)}></div>
-          <div class="flex gap-2">
-              {skills.map((skill, index) => (
-                <span>
-                  {skill}
-                  {index < skills.length - 1 ? " ·" : ""}
-                </span>
-              ))}
+  <body class="print:m-0 print:bg-transparent bg-[#e9ecf2]">
+    <div class="relative min-h-screen overflow-hidden">
+      <header class="print:hidden sticky top-0 z-20 border-b border-white/30 bg-white/70 backdrop-blur">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div>
+            <div class="text-xs uppercase tracking-[0.3em] text-[var(--cv-muted)]">Curriculum Vitae</div>
+            <h1 class="text-2xl md:text-3xl text-[var(--cv-ink)]">{name}</h1>
+            <div class="text-sm text-[var(--cv-muted)]" set:html={md(subTitle)}></div>
           </div>
-        </div>
 
-        <div class="sm:text-right">
-          <div class="font-bold">{name}</div>
-          {details.map((detail) => (
-            <div class="text-gray-500" set:html={md(detail)}></div>
-          ))}
-          <hr class="border-none my-2" />
-          {social.map((link) => (
-            <div>{link}</div>
-          ))}
-        </div>
-      </section>
-
-      <section class="my-12 border-b border-gray-300"></section>
-
-      <section class="flex flex-col gap-4 text-gray-500" set:html={md(description)}></section>
-
-      <section class="my-12 border-b border-gray-300"></section>
-
-      <section class="flex flex-col gap-8">
-        {experiences.map((experience) => (
-          <div class="flex flex-col gap-2">
-            <div>
-              <div class="font-bold">{experience.role}</div>
-              <div class="text-gray-300 italic capitalize">
-                {experience.contract} &middot; {period(currentLocale, experience.period.from)} -
-                {" "}
-                {period(currentLocale, experience.period.to)}
-              </div>
-              <div>
-                <span class="font-bold">{experience.company}</span>, {experience.shortDescription}
-              </div>
-              {experience.skills && experience.skills.length > 0 && (
-              <div class="flex flex-wrap gap-x-2">
-                  {experience.skills.map((skill, index) => (
-                    <span>
-                      {skill}
-                      {index < experience.skills!.length - 1 ? " ·" : ""}
-                    </span>
-                  ))}
-              </div>
+          <div class="flex flex-wrap gap-2 items-center">
+            <a
+              class="px-3 py-1.5 text-sm rounded-full border border-[var(--cv-ink)]/10 bg-white/70 hover:bg-white"
+              href="/"
+            >
+              Open Chat
+            </a>
+            <button
+              id="pdf-btn"
+              class="px-3 py-1.5 text-sm rounded-full border border-[var(--cv-ink)]/10 bg-white/70 hover:bg-white"
+              title="Download as PDF"
+            >
+              PDF
+            </button>
+            <button
+              id="view-toggle"
+              class="px-3 py-1.5 text-sm rounded-full border border-[var(--cv-ink)]/10 bg-white/70 hover:bg-white"
+              title="Toggle view"
+            >
+              YAML
+            </button>
+            <div class="flex rounded-full border border-[var(--cv-ink)]/10 overflow-hidden">
+              {locales.map((localeItem) =>
+                localeItem === currentLocale ? (
+                  <div class="px-3 py-1.5 text-sm bg-[var(--cv-ink)] text-white">
+                    {localeItem}
+                  </div>
+                ) : (
+                  <a
+                    class="px-3 py-1.5 text-sm bg-white/70 hover:bg-white"
+                    href={`/${localeItem}`}
+                  >
+                    {localeItem}
+                  </a>
+                )
               )}
             </div>
-            <div set:html={md(experience.description)}></div>
-            {experience.contributions ? (
-              <div class="text-gray-500">
-                <ul class="ml-4 list-none flex flex-col items-end">
-                  {experience.contributions.map((contribution) => (
-                    <li class="text-right">
-                      <span class="mr-4">&middot;</span>
-                      <span>{contribution}</span>
-                    </li>
+          </div>
+        </div>
+      </header>
+
+      <main class="relative max-w-6xl mx-auto px-4 py-8 md:py-12 grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div>
+          <div
+            id="cv-view"
+            class="print:p-0 rounded-lg border border-white/60 bg-white/90 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.45)] backdrop-blur p-6 md:p-10"
+          >
+            <section class="flex flex-col gap-6">
+              <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+                <div class="space-y-4">
+                  <div class="text-sm uppercase tracking-[0.35em] text-[var(--cv-muted)]">{title}</div>
+                  <div class="flex flex-wrap gap-2 text-sm text-[var(--cv-muted)]">
+                    {skills.map((skill, index) => (
+                      <span class="rounded-full border border-[var(--cv-ink)]/10 px-3 py-1">
+                        {skill}
+                        {index < skills.length - 1 ? "" : ""}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div class="text-sm text-[var(--cv-muted)] md:text-right">
+                  {details.map((detail) => (
+                    <div set:html={md(detail)}></div>
                   ))}
-                </ul>
+                  <div class="mt-4 flex flex-col gap-1 text-[var(--cv-ink)]">
+                    {social.map((link) => (
+                      <div>{link}</div>
+                    ))}
+                  </div>
+                </div>
               </div>
-            ) : null}
-          </div>
-        ))}
-      </section>
 
-      <section class="my-12 border-b border-gray-300"></section>
+              <div class="border-t border-[var(--cv-ink)]/10"></div>
 
-      <section class="flex flex-col gap-8">
-        {educations.map((education) => (
-          <div class="flex flex-col gap-2">
-            <div>
-              <div class="font-bold">{education.degree}</div>
-              <div>{education.specialization}</div>
-              <div class="text-gray-300 italic">
-                {education.location} &middot; {period(currentLocale, education.period.from)} -
-                {" "}
-                {period(currentLocale, education.period.to)}
+              <section class="space-y-4 text-[var(--cv-muted)]" set:html={md(description)}></section>
+            </section>
+
+            <div class="my-16"></div>
+
+            <section class="space-y-6">
+              <div class="flex items-center justify-between">
+                <h2 class="text-xl text-[var(--cv-ink)]">Experience</h2>
               </div>
-              <div class="font-bold">{education.school}</div>
-            </div>
-          </div>
-        ))}
-      </section>
-      </div>
 
-      <div id="yaml-view" class="hidden">
-        <pre class="bg-gray-50 p-4 border border-gray-200 overflow-x-auto text-sm text-gray-800 font-mono leading-relaxed">{sanitizedYaml}</pre>
-      </div>
+              <div class="space-y-6">
+                {experiences.map((experience) => (
+                  <div class="border-t border-[var(--cv-ink)]/10 pt-6">
+                    <div class="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+                      <div>
+                        <div class="text-lg font-semibold text-[var(--cv-ink)]">{experience.role}</div>
+                        <div class="text-sm text-[var(--cv-muted)] italic capitalize">
+                          {experience.contract} &middot; {period(currentLocale, experience.period.from)} -
+                          {" "}
+                          {period(currentLocale, experience.period.to)}
+                        </div>
+                        <div class="mt-2 text-sm">
+                          <span class="font-semibold text-[var(--cv-ink)]">{experience.company}</span>, {experience.shortDescription}
+                        </div>
+                      </div>
+                      {experience.skills && experience.skills.length > 0 && (
+                        <div class="flex flex-wrap gap-2 text-xs text-[var(--cv-muted)]">
+                          {experience.skills.map((skill) => (
+                            <span class="rounded-md border border-[var(--cv-ink)]/10 px-2 py-1">{skill}</span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                    <div class="mt-4 space-y-3 text-[var(--cv-muted)]" set:html={md(experience.description)}></div>
+                    {experience.contributions ? (
+                      <div class="mt-4 text-sm text-[var(--cv-muted)]">
+                        <div class="text-xs uppercase tracking-[0.3em] text-[var(--cv-muted)]">Highlights</div>
+                        <ul class="mt-3 space-y-2">
+                          {experience.contributions.map((contribution) => (
+                            <li class="flex gap-2">
+                              <span class="text-[var(--cv-accent)]">●</span>
+                              <span>{contribution}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : null}
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <div class="my-16"></div>
+
+            <section class="space-y-6">
+              <div class="flex items-center justify-between">
+                <h2 class="text-xl text-[var(--cv-ink)]">Education</h2>
+              </div>
+              <div class="grid gap-4 md:grid-cols-2">
+                {educations.map((education) => (
+                  <div class="border-t border-[var(--cv-ink)]/10 pt-4">
+                    <div class="text-base font-semibold text-[var(--cv-ink)]">{education.degree}</div>
+                    <div class="text-sm text-[var(--cv-muted)]">{education.specialization}</div>
+                    <div class="mt-2 text-xs uppercase tracking-[0.25em] text-[var(--cv-muted)]">
+                      {education.location} &middot; {period(currentLocale, education.period.from)} -
+                      {" "}
+                      {period(currentLocale, education.period.to)}
+                    </div>
+                    <div class="mt-3 font-semibold text-[var(--cv-ink)]">{education.school}</div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
+
+          <div id="yaml-view" class="hidden rounded-lg border border-white/60 bg-white/90 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.45)] backdrop-blur p-6 md:p-10">
+            <pre class="overflow-x-auto text-sm font-mono leading-relaxed"><code class="hljs language-yaml">{sanitizedYaml}</code></pre>
+          </div>
+        </div>
+
+        <aside class="print:hidden h-fit rounded-lg border border-white/60 bg-white/90 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.45)] backdrop-blur p-6 lg:sticky lg:top-24">
+          <div class="text-xs uppercase tracking-[0.3em] text-[var(--cv-muted)]">Career Chat</div>
+          <h2 class="mt-3 text-xl text-[var(--cv-ink)]">Ask about the journey</h2>
+          <p class="mt-3 text-sm text-[var(--cv-muted)]">
+            The chat assistant speaks both EN and FR. Ask for specifics, deep dives, or context behind any role.
+          </p>
+          <div class="mt-4 space-y-2 text-sm text-[var(--cv-muted)]">
+            <div class="rounded-md border border-[var(--cv-ink)]/10 bg-[var(--cv-tint)] px-3 py-2">What projects were most impactful?</div>
+            <div class="rounded-md border border-[var(--cv-ink)]/10 bg-[var(--cv-tint)] px-3 py-2">Which stack feels strongest in 2026?</div>
+            <div class="rounded-md border border-[var(--cv-ink)]/10 bg-[var(--cv-tint)] px-3 py-2">Resume highlights en francais ?</div>
+          </div>
+          <a
+            href="/"
+            class="mt-6 inline-flex w-full items-center justify-center rounded-md bg-[var(--cv-accent)] px-4 py-2 text-sm font-semibold text-white hover:opacity-90"
+          >
+            Open the chat UI
+          </a>
+        </aside>
+      </main>
     </div>
 
     <script>
@@ -229,6 +306,14 @@ const {
         cvView?.classList.toggle("hidden");
         yamlView?.classList.toggle("hidden");
         toggle.textContent = cvView?.classList.contains("hidden") ? "Formatted" : "YAML";
+        
+        // Highlight YAML when shown
+        if (!yamlView?.classList.contains("hidden")) {
+          const codeBlock = yamlView?.querySelector("code");
+          if (codeBlock) {
+            hljs.highlightElement(codeBlock);
+          }
+        }
       });
     </script>
   </body>
