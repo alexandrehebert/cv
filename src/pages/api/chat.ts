@@ -61,7 +61,7 @@ If the user asks about something related to Alexandre but not present in the res
 - Plays bass guitar and practiced piano when younger
 - Loves music and concerts, especially techno; listens to vinyls at home
 - Rides a Kawasaki Eliminator 500 motorcycle
-- Tries to improve at chess (chess.com)
+- Tries to improve his skills at chess (playing on chess.com)
 - Has traveled to 30 countries and worked as a digital nomad
 Pick a relevant or random hobby to mention, then steer the conversation back to Alexandre's career or resume facts.
 
