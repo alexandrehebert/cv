@@ -110,16 +110,9 @@ export default function ChatInterface() {
               
               {!hasMessages && (
                 <div className="min-h-[65vh] flex items-center justify-center">
-                  <div className="w-full max-w-3xl rounded-lg border border-white/60 bg-white/90 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.45)] backdrop-blur p-8 text-center">
+                  <div className="w-full max-w-3xl rounded-lg border border-white/60 bg-white/90 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.45)] backdrop-blur p-8 text-center relative">
+                    <img src="/profile.jpeg" alt="Profile" className="absolute top-4 left-4 h-16 w-16 rounded-md object-cover border-2 border-gray-200 shadow-xl grayscale brightness-200" />
                     <div className="text-xs uppercase tracking-[0.3em] text-gray-500">{t.headerLabel}</div>
-                    <div className="mt-4 flex items-center justify-center">
-                      <span className="inline-flex h-12 w-12 items-center justify-center rounded-md border border-gray-200 bg-gray-50">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-6 w-6 text-gray-700" aria-hidden="true">
-                          <path d="M4 20v-1a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v1" />
-                          <circle cx="12" cy="8" r="4" />
-                        </svg>
-                      </span>
-                    </div>
                     <h2 className="text-2xl font-semibold text-gray-900 mt-4">{t.welcomeTitle}</h2>
                     <p className="text-gray-600 mt-2">{t.welcomeDescription}</p>
                     <div className="mt-6 flex flex-wrap gap-2 justify-center max-w-2xl mx-auto">
