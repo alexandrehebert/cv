@@ -12,6 +12,9 @@ const currentLocale: Locale = locale === "en" ? "en" : "fr";
 const data = getCvData(currentLocale);
 const rawYaml = getRawYaml(currentLocale);
 const ogLocale = currentLocale === "fr" ? "fr" : "en";
+const sanitizedYaml = rawYaml
+  .replace(/^\s*phones:\n(?:\s*-.*\n)+/m, "")
+  .replace(/^\s*email:.*\n/m, "");
 
 const {
   title,
@@ -20,8 +23,6 @@ const {
   description,
   skills,
   details,
-  phones,
-  email,
   social,
   experiences,
   educations,
@@ -111,10 +112,6 @@ const {
             <div class="text-gray-500" set:html={md(detail)}></div>
           ))}
           <hr class="border-none my-2" />
-          {phones.map((phone) => (
-            <div>{phone}</div>
-          ))}
-          <div>{email}</div>
           {social.map((link) => (
             <div>{link}</div>
           ))}
@@ -189,7 +186,7 @@ const {
       </div>
 
       <div id="yaml-view" class="hidden">
-        <pre class="bg-gray-50 p-4 border border-gray-200 overflow-x-auto text-sm text-gray-800 font-mono leading-relaxed">{rawYaml}</pre>
+        <pre class="bg-gray-50 p-4 border border-gray-200 overflow-x-auto text-sm text-gray-800 font-mono leading-relaxed">{sanitizedYaml}</pre>
       </div>
     </div>
 
