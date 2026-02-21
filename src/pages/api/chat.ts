@@ -1,8 +1,13 @@
 import { streamText } from "ai";
 import { createMistral } from "@ai-sdk/mistral";
+import { createGroq } from "@ai-sdk/groq";
 
 const mistral = createMistral({
   apiKey: import.meta.env.MISTRAL_API_KEY,
+});
+
+const groq = createGroq({
+  apiKey: import.meta.env.GROQ_API_KEY,
 });
 
 function getSystemPrompt(currentDate: string) {
@@ -248,11 +253,33 @@ export async function POST({ request }: { request: Request }) {
     };
   });
 
-  const result = streamText({
-    model: mistral("open-mistral-7b"),
-    system: getSystemPrompt(currentDate),
-    messages: convertedMessages,
-  });
+  // Try Mistral first, fallback to Groq if quota is reached
+  try {
+    const result = streamText({
+      model: mistral("open-mistral-7b"),
+      system: getSystemPrompt(currentDate),
+      messages: convertedMessages,
+    });
 
-  return result.toUIMessageStreamResponse();
+    return result.toUIMessageStreamResponse();
+  } catch (error: any) {
+    // Check if it's a quota/rate limit error
+    const isQuotaError = error?.message?.toLowerCase().includes('quota') ||
+                        error?.message?.toLowerCase().includes('rate limit') ||
+                        error?.status === 429;
+    
+    if (isQuotaError) {
+      // Fallback to Groq
+      const result = streamText({
+        model: groq("llama-3.3-70b-versatile"),
+        system: getSystemPrompt(currentDate),
+        messages: convertedMessages,
+      });
+
+      return result.toUIMessageStreamResponse();
+    }
+    
+    // If it's not a quota error, rethrow
+    throw error;
+  }
 }
