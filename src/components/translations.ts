@@ -3,6 +3,7 @@ export const translations = {
     // CvPage
     curriculumVitae: "Curriculum Vitae",
     openChat: "Open Chat",
+    sourceCode: "Source Code",
     pdf: "PDF",
     yaml: "YAML",
     experience: "Experience",
@@ -39,6 +40,7 @@ export const translations = {
     // CvPage
     curriculumVitae: "CV",
     openChat: "Ouvrir le chat",
+    sourceCode: "Code source",
     pdf: "PDF",
     yaml: "YAML",
     experience: "Expérience",
