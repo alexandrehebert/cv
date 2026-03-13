@@ -78,6 +78,14 @@ export default function ChatInterface() {
                 >
                   {t.viewCv}
                 </a>
+                <a
+                  href="https://github.com/alexandrehebert/cv"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 text-sm rounded-full border border-gray-900/10 bg-white/70 hover:bg-white"
+                >
+                  {t.sourceCode}
+                </a>
                 <div className="flex rounded-full border border-gray-900/10 overflow-hidden">
                   {(["en", "fr"] as Locale[]).map((localeItem) =>
                     localeItem === locale ? (
