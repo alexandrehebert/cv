@@ -3,6 +3,7 @@ import "../index.css";
 import favicon from "../favicon.png";
 import { getCvData, locales, md, period, getRawYaml, type Locale } from "../lib/cv";
 import { translations } from "./translations";
+import CvPdfOnly from "./CvPdfOnly.astro";
 
 const { locale = "fr", baseHref = "/" } = Astro.props as {
   locale?: Locale;
@@ -13,6 +14,8 @@ const currentLocale: Locale = locale === "en" ? "en" : "fr";
 const data = getCvData(currentLocale);
 const rawYaml = getRawYaml(currentLocale);
 const ogLocale = currentLocale === "fr" ? "fr" : "en";
+const basePath = baseHref.endsWith("/") ? baseHref.slice(0, -1) : baseHref;
+const pdfHref = `${basePath}/pdf/${currentLocale}.pdf`;
 const sanitizedYaml = rawYaml
   .replace(/^\s*phones:\n(?:\s*-.*\n)+/m, "")
   .replace(/^\s*email:.*\n/m, "");
@@ -50,7 +53,6 @@ const {
     <meta name="twitter:description" content="Curriculum Vitae" />
     <meta name="twitter:image" content="https://a1exand.re/profile.jpg" />
     <link rel="canonical" href="https://a1exand.re/" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/yaml.min.js"></script>
@@ -78,6 +80,44 @@ const {
         font-style: normal;
         font-weight: 600;
         color: var(--cv-ink);
+      }
+
+      @page {
+        margin: 22mm;
+        size: A4;
+      }
+
+      #print-cv-view {
+        display: none;
+      }
+
+      @media print {
+        html {
+          background: white;
+        }
+        body {
+          background: white;
+          padding: 0 !important;
+          margin: 0 !important;
+        }
+        header {
+          display: none !important;
+        }
+        main {
+          display: none !important;
+        }
+        .relative.min-h-screen {
+          display: none !important;
+        }
+        .print-hidden {
+          display: none !important;
+        }
+        #print-cv-view {
+          display: block !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          background: white;
+        }
       }
     </style>
   </head>
@@ -107,13 +147,15 @@ const {
             >
               {translations[currentLocale].sourceCode}
             </a>
-            <button
+            <a
               id="pdf-btn"
               class="px-3 py-1.5 text-sm rounded-full border border-[var(--cv-ink)]/10 bg-white/70 hover:bg-white"
+              href={pdfHref}
+              download={currentLocale === "en" ? "alexandre-hebert-resume-en.pdf" : "alexandre-hebert-cv-fr.pdf"}
               title="Download as PDF"
             >
               PDF
-            </button>
+            </a>
             <button
               id="view-toggle"
               class="px-3 py-1.5 text-sm rounded-full border border-[var(--cv-ink)]/10 bg-white/70 hover:bg-white"
@@ -187,7 +229,7 @@ const {
 
               <div class="space-y-6">
                 {experiences.map((experience) => (
-                  <div class="border-t border-[var(--cv-ink)]/10 pt-6">
+                  <div class="experience-item border-t border-[var(--cv-ink)]/10 pt-6">
                     <div class="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                       <div>
                         <div class="text-lg font-semibold text-[var(--cv-ink)]">{experience.role}</div>
@@ -235,7 +277,7 @@ const {
               </div>
               <div class="grid gap-4 md:grid-cols-2">
                 {educations.map((education) => (
-                  <div class="border-t border-[var(--cv-ink)]/10 pt-4">
+                  <div class="education-item border-t border-[var(--cv-ink)]/10 pt-4">
                     <div class="text-base font-semibold text-[var(--cv-ink)]">{education.degree}</div>
                     <div class="text-sm text-[var(--cv-muted)]">{education.specialization}</div>
                     <div class="mt-2 text-xs uppercase tracking-[0.25em] text-[var(--cv-muted)]">
@@ -276,40 +318,14 @@ const {
       </main>
     </div>
 
+    <div id="print-cv-view" class="print-hidden">
+      <CvPdfOnly locale={currentLocale} />
+    </div>
+
     <script>
-      declare const html2pdf: any;
-      
-      const pdfBtn = document.getElementById("pdf-btn");
       const toggle = document.getElementById("view-toggle");
       const cvView = document.getElementById("cv-view");
       const yamlView = document.getElementById("yaml-view");
-
-      pdfBtn?.addEventListener("click", () => {
-        const element = document.getElementById("cv-view");
-        const wasHidden = cvView?.classList.contains("hidden");
-        
-        // Temporarily show the formatted view if it's hidden
-        if (wasHidden) {
-          cvView?.classList.remove("hidden");
-          yamlView?.classList.add("hidden");
-        }
-        
-        const opt = {
-          margin: 3,
-          filename: `resume-${document.documentElement.lang}.pdf`,
-          image: { type: "jpeg", quality: 0.98 },
-          html2canvas: { scale: 2 },
-          jsPDF: { orientation: "portrait", unit: "mm", format: "a4" },
-        };
-        
-        html2pdf().set(opt).from(element).save().then(() => {
-          // Restore previous view state
-          if (wasHidden) {
-            cvView?.classList.add("hidden");
-            yamlView?.classList.remove("hidden");
-          }
-        });
-      });
 
       toggle?.addEventListener("click", () => {
         cvView?.classList.toggle("hidden");

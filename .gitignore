@@ -135,3 +135,6 @@ dist
 
 .idea
 .DS_Store
+
+# Vercel build output
+.vercel/

@@ -1,0 +1,381 @@
+---
+import { getCvData, md, period, type Locale } from "../lib/cv";
+import { translations } from "./translations";
+
+const { locale = "fr" } = Astro.props as { locale?: Locale };
+
+const currentLocale: Locale = locale === "en" ? "en" : "fr";
+const data = getCvData(currentLocale);
+const sectionLabels = {
+  experience: translations[currentLocale].experience,
+  education: translations[currentLocale].education,
+  highlights: currentLocale === "fr" ? "Réalisations" : "Achievements",
+};
+
+const {
+  title,
+  name,
+  description,
+  skills,
+  details,
+  social,
+  experiences,
+  educations,
+} = data;
+---
+
+<style is:global>
+  :root {
+    --pdf-separator: #d0d0d0;
+  }
+
+  .pdf-container {
+    font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    color: #121316;
+    line-height: 1.7;
+    background: white;
+    margin: 0;
+    padding: 0;
+  }
+
+  .pdf-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    gap: 30px;
+    margin-bottom: 28px;
+    align-items: start;
+  }
+
+  .pdf-header-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-self: start;
+  }
+
+  .pdf-header-right {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+  }
+
+  .pdf-name {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .pdf-title {
+    font-size: 18px;
+    text-transform: none;
+    letter-spacing: 0.01em;
+    color: #5f636b;
+    margin: 0;
+  }
+
+  .pdf-header-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 15px;
+    line-height: 1.25;
+    color: #5f636b;
+  }
+
+  .pdf-right-line {
+    margin: 0;
+  }
+
+  .pdf-right-line strong {
+    font-weight: 700;
+    color: #121316;
+  }
+
+  .pdf-right-line :global(em) {
+    font-style: normal;
+    font-weight: 700;
+    color: #121316;
+  }
+
+  .pdf-right-line :global(p) {
+    margin: 0;
+  }
+
+  .pdf-right-line-link {
+    color: #121316;
+  }
+
+  .pdf-divider {
+    border: none;
+    border-top: 1px solid var(--pdf-separator);
+    margin: 28px 0;
+    grid-column: 1 / -1;
+  }
+
+  .pdf-description {
+    margin-bottom: 30px;
+    font-size: 15px;
+    line-height: 1.75;
+    grid-column: 1 / -1;
+  }
+
+  .pdf-description strong {
+    font-weight: 700;
+    color: #121316;
+  }
+
+  .pdf-description em {
+    font-style: normal;
+    font-weight: 700;
+    color: #121316;
+  }
+
+  .pdf-section {
+    margin-top: 38px;
+    margin-bottom: 38px;
+  }
+
+  .pdf-section--education {
+    margin-top: 38px;
+    margin-bottom: 0;
+  }
+
+  .pdf-section-title {
+    font-size: 21px;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 0.01em;
+    border-bottom: 1px solid var(--pdf-separator);
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+    page-break-after: auto;
+  }
+
+  .pdf-experience-item {
+    margin-bottom: 26px;
+    page-break-inside: auto;
+  }
+
+  .pdf-experience-role,
+  .pdf-experience-meta,
+  .pdf-experience-company,
+  .pdf-experience-description,
+  .pdf-experience-skills,
+  .pdf-highlights,
+  .pdf-highlights-list {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .pdf-experience-role {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+  }
+
+  .pdf-experience-meta {
+    font-size: 15px;
+    color: #5f636b;
+    font-style: italic;
+    margin-bottom: 6px;
+  }
+
+  .pdf-experience-company {
+    font-size: 15px;
+    margin-bottom: 14px;
+  }
+
+  .pdf-experience-company strong {
+    font-weight: 700;
+    color: #121316;
+  }
+
+  .pdf-experience-description {
+    font-size: 15px;
+    color: #5f636b;
+    margin-bottom: 14px;
+    line-height: 1.6;
+  }
+
+  .pdf-experience-description strong {
+    font-weight: 700;
+    color: #121316;
+  }
+
+  .pdf-experience-description em {
+    font-style: normal;
+    font-weight: 700;
+    color: #121316;
+  }
+
+  .pdf-highlights {
+    margin-top: 14px;
+  }
+
+  .pdf-highlights-list {
+    margin: 0;
+    padding-left: 16px;
+    list-style: disc;
+  }
+
+  .pdf-highlights-list li {
+    font-size: 15px;
+    color: #5f636b;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+
+  .pdf-experience-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .pdf-skill-tag {
+    font-size: 15px;
+    color: #5f636b;
+    display: inline;
+  }
+
+  .pdf-education-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 24px;
+  }
+
+  .pdf-education-section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .pdf-education-item {
+    page-break-inside: avoid;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .pdf-education-degree {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0;
+    color: #121316;
+  }
+
+  .pdf-education-spec {
+    font-size: 15px;
+    color: #5f636b;
+    margin: 0;
+  }
+
+  .pdf-education-meta {
+    font-size: 14px;
+    text-transform: none;
+    letter-spacing: 0.01em;
+    color: #5f636b;
+    margin: 0 0 2px 0;
+  }
+
+  .pdf-education-school {
+    font-size: 16px;
+    font-weight: 700;
+    color: #121316;
+    margin: 0;
+  }
+
+  @media print {
+    .pdf-container {
+      margin: 0;
+      padding: 0;
+    }
+    .pdf-section {
+      page-break-inside: auto;
+    }
+    .pdf-education-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="pdf-container">
+  <div class="pdf-header">
+    <div class="pdf-header-left">
+      <h1 class="pdf-name">{name}</h1>
+      <div class="pdf-title">{title}</div>
+    </div>
+    <div class="pdf-header-right">
+      <div class="pdf-header-meta">
+        <div class="pdf-right-line" set:html={skills.join(" &middot; ")}></div>
+        {details.map((detail) => (
+          <div class="pdf-right-line" set:html={md(detail)}></div>
+        ))}
+        {social.map((link) => (
+          <div class="pdf-right-line pdf-right-line-link">{link}</div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <hr class="pdf-divider" />
+
+  <div class="pdf-description" set:html={md(description)}></div>
+
+  <div class="pdf-section">
+    <h2 class="pdf-section-title">{sectionLabels.experience}</h2>
+    <div>
+      {experiences.map((experience) => (
+        <div class="pdf-experience-item">
+          <div class="pdf-experience-role">{experience.role}</div>
+          <div class="pdf-experience-meta">
+            {experience.contract} · {period(currentLocale, experience.period.from)} - {period(currentLocale, experience.period.to)}
+          </div>
+          <div class="pdf-experience-company">
+            <strong>{experience.company}</strong>, {experience.shortDescription}
+          </div>
+          <div class="pdf-experience-description" set:html={md(experience.description)}></div>
+          {experience.skills && experience.skills.length > 0 && (
+            <div class="pdf-experience-skills">
+              {experience.skills.map((skill, index) => (
+                <span class="pdf-skill-tag">
+                  {skill}
+                  {index < experience.skills!.length - 1 ? " \u00b7" : ""}
+                </span>
+              ))}
+            </div>
+          )}
+          {experience.contributions && (
+            <div class="pdf-highlights">
+              <ul class="pdf-highlights-list">
+                {experience.contributions.map((contribution) => (
+                  <li>{contribution}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="pdf-section pdf-section--education">
+    <div class="pdf-education-section">
+      <h2 class="pdf-section-title">{sectionLabels.education}</h2>
+      <div class="pdf-education-grid">
+        {educations.map((education) => (
+          <div class="pdf-education-item">
+            <div class="pdf-education-degree">{education.degree}</div>
+            <div class="pdf-education-spec">{education.specialization}</div>
+            <div class="pdf-education-meta">
+              {education.location} · {period(currentLocale, education.period.from)} - {period(currentLocale, education.period.to)}
+            </div>
+            <div class="pdf-education-school">{education.school}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>

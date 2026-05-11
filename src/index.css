@@ -14,3 +14,252 @@ textarea,
 select {
 	font-family: inherit;
 }
+
+/* Print/PDF Styles */
+@media print {
+	* {
+		box-shadow: none !important;
+		background-attachment: scroll !important;
+	}
+
+	body {
+		background: white;
+		margin: 0;
+		padding: 0;
+		color: #121316;
+		line-height: 1.6;
+	}
+
+	/* Remove all web-only elements */
+	header,
+	aside,
+	.print\:hidden {
+		display: none !important;
+	}
+
+	/* Main content area */
+	#cv-view {
+		box-shadow: none !important;
+		border: none !important;
+		border-radius: 0 !important;
+		background: white !important;
+		padding: 0 !important;
+		margin: 0 !important;
+		max-width: 100% !important;
+	}
+
+	/* Sections - avoid breaking inside */
+	section {
+		page-break-inside: avoid;
+		break-inside: avoid;
+	}
+
+	/* Keep items together */
+	.experience-item,
+	.education-item {
+		page-break-inside: avoid;
+		break-inside: avoid;
+	}
+
+	/* Prevent widows and orphans */
+	h2,
+	h3,
+	p {
+		page-break-after: avoid;
+	}
+
+	/* Headings */
+	h1 {
+		font-size: 24px;
+		font-weight: 700;
+		margin: 0 0 8px 0;
+		page-break-after: avoid;
+	}
+
+	h2 {
+		font-size: 14px;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.15em;
+		margin: 16px 0 12px 0;
+		padding-bottom: 8px;
+		border-bottom: 1px solid #121316;
+		page-break-after: avoid;
+	}
+
+	/* Simple separators */
+	.border-t,
+	.border-t.border-\[var\(--cv-ink\)\/10\] {
+		border-top: 1px solid #d0d0d0 !important;
+		border-color: #d0d0d0 !important;
+		margin: 0 !important;
+	}
+
+	/* Remove all complex Tailwind styling */
+	[class*="rounded-"],
+	[class*="shadow-"],
+	[class*="backdrop-"],
+	[class*="bg-white"],
+	[class*="bg-\["] {
+		border-radius: 0 !important;
+		box-shadow: none !important;
+		background-color: white !important;
+		backdrop-filter: none !important;
+	}
+
+	/* Keep bold text bold */
+	em {
+		font-style: normal;
+		font-weight: 700;
+		color: #121316;
+	}
+
+	/* Remove visual styling from skill badges */
+	.rounded-full.border,
+	.rounded-md.border,
+	[class*="border-\[var"],
+	[class*="px-3"],
+	[class*="py-1"] {
+		border: none !important;
+		background: transparent !important;
+		padding: 0 !important;
+		margin: 0 2px 0 0 !important;
+		border-radius: 0 !important;
+	}
+
+	/* Section headings */
+	.text-xs.uppercase,
+	.text-xs.uppercase.tracking-\[0\.3em\] {
+		font-size: 10px;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		margin-top: 8px;
+		margin-bottom: 6px;
+		font-weight: 600;
+		color: #121316 !important;
+	}
+
+	/* Convert grid layouts to single column */
+	.grid.gap-4.md\:grid-cols-2 {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 12px;
+	}
+
+	.flex.flex-col.gap-6.md\:flex-row {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	/* Experience and education item styling */
+	.experience-item,
+	.education-item {
+		padding-top: 12px;
+		margin-top: 12px;
+	}
+
+	/* Spacing adjustments */
+	.my-16 {
+		margin-top: 20px;
+		margin-bottom: 20px;
+		page-break-inside: avoid;
+	}
+
+	/* Font sizes for print */
+	.text-sm {
+		font-size: 10px;
+		line-height: 1.5;
+	}
+
+	.text-lg,
+	.text-base {
+		font-size: 13px;
+		font-weight: 600;
+	}
+
+	.text-xl {
+		font-size: 15px;
+		font-weight: 700;
+	}
+
+	.text-2xl,
+	.text-3xl {
+		font-size: 20px;
+		font-weight: 700;
+	}
+
+	/* Text colors - ensure they print */
+	.text-\[var\(--cv-muted\)\],
+	.italic {
+		color: #5f636b;
+	}
+
+	.text-\[var\(--cv-ink\)\],
+	.font-semibold {
+		color: #121316;
+		font-weight: 600;
+	}
+
+	.text-\[var\(--cv-accent\)\] {
+		color: #2f3338;
+		font-weight: 600;
+	}
+
+	/* Remove padding from containers */
+	.md\:p-10,
+	.p-6 {
+		padding: 0 !important;
+	}
+
+	/* List styling */
+	ul,
+	li {
+		margin: 0;
+		padding: 0;
+	}
+
+	ul {
+		margin-left: 12px;
+	}
+
+	li {
+		margin-bottom: 4px;
+		list-style-type: disc;
+	}
+
+	/* Flex layouts */
+	.flex {
+		display: flex;
+	}
+
+	.flex-wrap {
+		flex-wrap: wrap;
+	}
+
+	.gap-2 {
+		gap: 4px;
+	}
+
+	.gap-6 {
+		gap: 6px;
+	}
+
+	/* Bullets in contributions */
+	.text-\[var\(--cv-accent\)\] {
+		content: "●";
+	}
+
+	/* Space between sections */
+	.space-y-6 > * + * {
+		margin-top: 12px;
+	}
+
+	.space-y-4 > * + * {
+		margin-top: 8px;
+	}
+
+	.space-y-3 > * + * {
+		margin-top: 6px;
+	}
+}
