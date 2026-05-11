@@ -79,9 +79,9 @@ ALEXANDRE'S RESUME DATA:
 - Total experience with Java/Spring: 4 years (earlier career)
 
 **Technology Experience Duration (calculate from dates below):**
-- TypeScript: Used at Fairstone (Dec 2023-Present), Qiara (Mar 2022-Sep 2023), Alkemics (Aug 2020-Feb 2021), Qare (Nov 2019-Jul 2020), Virtuo (Nov 2018-Oct 2019) = ~5+ years
+ - TypeScript: Used at Fairstone (Dec 2023-Present), Qiara (Mar 2022-Sep 2023), Alkemics (Aug 2020-Feb 2022), Qare (Nov 2019-Jul 2020), Virtuo (Nov 2018-Oct 2019) = ~5+ years
 - Node.js: Used at Fairstone (Dec 2023-Present), Qiara (Mar 2022-Sep 2023), Qare (Nov 2019-Jul 2020), Virtuo (Nov 2018-Oct 2019), Frichti (Nov 2017-Oct 2018), KinTribe (Feb 2016-Oct 2017) = ~6+ years
-- React: Used at Fairstone (Dec 2023-Present), Qiara (Mar 2022-Sep 2023), Alkemics (Aug 2020-Feb 2021), Qare (Nov 2019-Jul 2020), Virtuo (Nov 2018-Oct 2019), Frichti (Nov 2017-Oct 2018), Canal Plus (Apr 2017-Jul 2017) = ~6+ years
+ - React: Used at Fairstone (Dec 2023-Present), Qiara (Mar 2022-Sep 2023), Alkemics (Aug 2020-Feb 2022), Qare (Nov 2019-Jul 2020), Virtuo (Nov 2018-Oct 2019), Frichti (Nov 2017-Oct 2018), Canal Plus (Apr 2017-Jul 2017) = ~6+ years
 - AWS/Serverless: Used at Fairstone (Dec 2023-Present), KinTribe (Feb 2016-Oct 2017) = ~4+ years
 - PostgreSQL: Used at Qiara (Mar 2022-Sep 2023), Frichti (Nov 2017-Oct 2018) = ~2.5 years
 - MongoDB: Used at Qare (Nov 2019-Jul 2020), Virtuo (Nov 2018-Oct 2019), KinTribe (Feb 2016-Oct 2017) = ~3 years
@@ -120,9 +120,9 @@ ALEXANDRE'S RESUME DATA:
      * Developed invoice generation service
      * Developed transactional email sending service
 
-3. **Alkemics (now Salsify)** (August 2020 - February 2021 = 6 months)
-   - Dates: 2020-08 to 2021-02
-   - Duration: ~7 months
+3. **Alkemics (now Salsify)** (August 2020 - February 2022 = 1.5 years)
+  - Dates: 2020-08 to 2022-02
+  - Duration: ~19 months
    - Role: Senior Fullstack Developer
    - Location: Paris, France
    - Description: Data aggregator for retail companies
