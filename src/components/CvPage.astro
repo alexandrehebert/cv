@@ -326,6 +326,39 @@ const {
       const toggle = document.getElementById("view-toggle");
       const cvView = document.getElementById("cv-view");
       const yamlView = document.getElementById("yaml-view");
+      const pdfBtn = document.getElementById("pdf-btn");
+
+      const getPdfDownloadName = () =>
+        document.documentElement.lang === "en"
+          ? "alexandre-hebert-resume-en.pdf"
+          : "alexandre-hebert-cv-fr.pdf";
+
+      pdfBtn?.addEventListener("click", async (event) => {
+        event.preventDefault();
+
+        const href = pdfBtn.getAttribute("href");
+        if (!href) return;
+
+        try {
+          const response = await fetch(href, { credentials: "same-origin" });
+          if (!response.ok) {
+            window.location.href = href;
+            return;
+          }
+
+          const blob = await response.blob();
+          const blobUrl = URL.createObjectURL(blob);
+          const link = document.createElement("a");
+          link.href = blobUrl;
+          link.download = getPdfDownloadName();
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          URL.revokeObjectURL(blobUrl);
+        } catch {
+          window.location.href = href;
+        }
+      });
 
       toggle?.addEventListener("click", () => {
         cvView?.classList.toggle("hidden");
