@@ -21,15 +21,38 @@ const chromeCandidates = [
   "/Applications/Chromium.app/Contents/MacOS/Chromium",
 ].filter(Boolean);
 
-function resolveChromePath() {
+async function resolveBrowserConfig() {
   for (const candidate of chromeCandidates) {
     if (candidate && existsSync(candidate)) {
-      return candidate;
+      return {
+        executablePath: candidate,
+        headless: true,
+        args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      };
+    }
+  }
+
+  let chromium;
+  try {
+    ({ default: chromium } = await import("@sparticuz/chromium"));
+  } catch {
+    // Ignore import errors and throw a unified message below.
+  }
+
+  if (chromium) {
+    const executablePath = await chromium.executablePath();
+    if (executablePath && existsSync(executablePath)) {
+      return {
+        executablePath,
+        headless: chromium.headless ?? true,
+        defaultViewport: chromium.defaultViewport,
+        args: [...new Set([...chromium.args, "--no-sandbox", "--disable-setuid-sandbox"])],
+      };
     }
   }
 
   throw new Error(
-    "No Chrome/Chromium executable found. Set PDF_CHROME_PATH to your browser binary."
+    "No Chrome/Chromium executable found. Set PDF_CHROME_PATH or add @sparticuz/chromium for serverless builds."
   );
 }
 
@@ -85,11 +108,8 @@ async function main() {
 
   await waitForServer(`${baseUrl}/en-preview`);
 
-  const browser = await puppeteer.launch({
-    executablePath: resolveChromePath(),
-    headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  });
+  const browserConfig = await resolveBrowserConfig();
+  const browser = await puppeteer.launch(browserConfig);
 
   try {
     for (const locale of ["en", "fr"]) {
